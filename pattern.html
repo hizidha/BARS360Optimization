@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="SHORTCUT ICON" href="/src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
     <title>BARS Pattern | HRMS</title>
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
@@ -61,10 +62,10 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.html" class="brand-link">
-                <div class="brand-text font-weight-semibold" style="text-align: center; color: black;">
-                    <span class="font-weight-bold" style="color: rgb(202, 8, 8);">SPIL</span>HRMS
-                </div>
+            <a href="#" class="brand-link">
+                <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
+                    class="brand-image img-circle" style="padding-left: 0; margin-left: 10px;">
+                <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
@@ -74,7 +75,8 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon"><img src="/src/spil.png" alt="logo-spil" style="width: 4vh;"></i>
+                                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+                                        alt="logo-spil" style="width: 34px;"></i>
                                 <p class="font-weight-bold" style="font-size: 10pt; padding-left: 16px;">Connecting
                                     Islands</p>
                             </a>
@@ -163,7 +165,7 @@
                                     <div class="left">
                                         <span class="font-weight-semibold">by Period :</span>
                                         <select class="form-control-sm" name="period-by" id="period-by"
-                                            style="width: 80px; margin: 0 3vh 0 1vh">
+                                            style="width: 80px; margin: 0 20px 0 10px">
                                             <option>Period</option>
                                             <option value="2024" selected>2024</option>
                                             <option value="2023">2023</option>
@@ -323,12 +325,12 @@
                                                 <td>Chloe Haly</td>
                                                 <td>
                                                     <button class="btn btn-xs btn-primary mr-1" data-toggle="modal"
-                                                    data-target="#editDataModal">
+                                                        data-target="#editDataModal">
                                                         <i class="fas fa-pen-to-square pr-1"></i>
                                                         <span class="font-weight-semibold">Edit</span>
                                                     </button>
                                                     <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                    data-target="#deleteDataModal">
+                                                        data-target="#deleteDataModal">
                                                         <i class="fas fa-trash pr-1"></i>
                                                         <span class="font-weight-semibold">Delete</span>
                                                     </button>
@@ -383,7 +385,8 @@
                         <div class="form-group" style="display: flex;">
                             <div class="col-sm-8">
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Atasan Langsung</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Atasan Langsung</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-1" type="checkbox">
@@ -394,7 +397,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Bawahan Langsung</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Bawahan Langsung</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-2" type="checkbox">
@@ -405,7 +409,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Rekan Tim</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Rekan Tim</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-3" type="checkbox">
@@ -416,7 +421,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Diri Sendiri</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Diri Sendiri</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-4" type="checkbox">
@@ -428,9 +434,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <label for="inputPattern3" class="col-form-label ml-3" style="margin-top: 30px;">Total</label>
+                                <label for="inputPattern3" class="col-form-label ml-3"
+                                    style="margin-top: 30px;">Total</label>
                                 <input type="number" min="0" max="100" class="form-control ml-3" name="inputTotal"
-                                            placeholder="0" style="width: 90px;" disabled>
+                                    placeholder="0" style="width: 90px;" disabled>
                             </div>
                         </div>
                 </div>
@@ -463,7 +470,8 @@
                         <div class="form-group" style="display: flex;">
                             <div class="col-sm-8">
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Atasan Langsung</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Atasan Langsung</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-1" type="checkbox" checked>
@@ -474,7 +482,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Bawahan Langsung</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Bawahan Langsung</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-2" type="checkbox">
@@ -485,7 +494,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Rekan Tim</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Rekan Tim</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-3" type="checkbox">
@@ -496,7 +506,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Diri Sendiri</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Diri Sendiri</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-4" type="checkbox">
@@ -508,9 +519,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <label for="inputPattern3" class="col-form-label ml-3" style="margin-top: 30px;">Total</label>
-                                <input type="number" min="0" max="100" class="form-control ml-3" value="100" name="inputTotal"
-                                            placeholder="0" style="width: 90px;" disabled>
+                                <label for="inputPattern3" class="col-form-label ml-3"
+                                    style="margin-top: 30px;">Total</label>
+                                <input type="number" min="0" max="100" class="form-control ml-3" value="100"
+                                    name="inputTotal" placeholder="0" style="width: 90px;" disabled>
                             </div>
                         </div>
                 </div>
@@ -545,7 +557,8 @@
                         <div class="form-group" style="display: flex;">
                             <div class="col-sm-8">
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Atasan Langsung</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Atasan Langsung</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-1" type="checkbox" checked disabled>
@@ -556,7 +569,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Bawahan Langsung</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Bawahan Langsung</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-2" type="checkbox" disabled>
@@ -567,7 +581,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Rekan Tim</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Rekan Tim</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-3" type="checkbox" disabled>
@@ -578,7 +593,8 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="inputPattern2" class="col-form-label col-sm-6" style="padding: 7px 0;">Diri Sendiri</label>
+                                    <label for="inputPattern2" class="col-form-label col-sm-6"
+                                        style="padding: 7px 0;">Diri Sendiri</label>
                                     <div class="col-sm-5" style="display: inline-flex; padding: 0;">
                                         <div class="form-check" style="margin-top: 8px;">
                                             <input class="form-check-input-4" type="checkbox" disabled>
@@ -590,9 +606,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <label for="inputPattern3" class="col-form-label ml-3" style="margin-top: 30px;">Total</label>
-                                <input type="number" min="0" max="100" class="form-control ml-3" value="100" name="inputTotal"
-                                            placeholder="0" style="width: 90px;" disabled>
+                                <label for="inputPattern3" class="col-form-label ml-3"
+                                    style="margin-top: 30px;">Total</label>
+                                <input type="number" min="0" max="100" class="form-control ml-3" value="100"
+                                    name="inputTotal" placeholder="0" style="width: 90px;" disabled>
                             </div>
                         </div>
                 </div>
@@ -622,15 +639,15 @@
                 "lengthChange": true,
             });
 
-            $('.form-check-input-1').change(function() {
-            if ($(this).is(':checked')) {
-                $('input[name="input-1"]').prop('disabled', false);
-            } else {
-                $('input[name="input-1"]').prop('disabled', true);
-            }
-        });
+            $('.form-check-input-1').change(function () {
+                if ($(this).is(':checked')) {
+                    $('input[name="input-1"]').prop('disabled', false);
+                } else {
+                    $('input[name="input-1"]').prop('disabled', true);
+                }
+            });
 
-            $('.form-check-input-2').change(function() {
+            $('.form-check-input-2').change(function () {
                 if ($(this).is(':checked')) {
                     $('input[name="input-2"]').prop('disabled', false);
                 } else {
@@ -638,7 +655,7 @@
                 }
             });
 
-            $('.form-check-input-3').change(function() {
+            $('.form-check-input-3').change(function () {
                 if ($(this).is(':checked')) {
                     $('input[name="input-3"]').prop('disabled', false);
                 } else {
@@ -646,7 +663,7 @@
                 }
             });
 
-            $('.form-check-input-4').change(function() {
+            $('.form-check-input-4').change(function () {
                 if ($(this).is(':checked')) {
                     $('input[name="input-4"]').prop('disabled', false);
                 } else {
@@ -657,17 +674,14 @@
     </script>
 
     <script>
-        function getUploadedFile(){
-            google.script.run.getUploadedFile()
-        }
-
-        function loadPage(content){
+        function loadPage(content) {
             document.body.innerHTML = content
         }
 
-        function getPage(page){
+        function getPage(page) {
             google.script.run.withSuccessHandler(loadPage).getHtmlContent(page)
         }
     </script>
 </body>
+
 </html>

@@ -5,7 +5,8 @@
     <base target="_top">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="/src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
     <title>BARS Participant | HRMS</title>
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
@@ -19,10 +20,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
 
     <style>
-        a, a:hover, a:focus {
+        a,
+        a:hover,
+        a:focus {
             color: white;
             text-decoration: none;
         }
+
         th {
             font-size: 13px;
         }
@@ -87,10 +91,10 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.html" class="brand-link">
-                <div class="brand-text font-weight-semibold" style="text-align: center; color: black;">
-                    <span class="font-weight-bold" style="color: rgb(202, 8, 8);">SPIL</span>HRMS
-                </div>
+            <a href="#" class="brand-link">
+                <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
+                    class="brand-image img-circle" style="padding-left: 0; margin-left: 10px;">
+                <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
@@ -100,7 +104,8 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon"><img src="/src/spil.png" alt="logo-spil" style="width: 4vh;"></i>
+                                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+                                        alt="logo-spil" style="width: 34px;"></i>
                                 <p class="font-weight-bold" style="font-size: 10pt; padding-left: 16px;">Connecting
                                     Islands</p>
                             </a>
@@ -189,7 +194,7 @@
                                     <div class="left">
                                         <span class="font-weight-semibold">by Period :</span>
                                         <select class="form-control-sm" name="period-by" id="period-by"
-                                            style="width: 80px; margin: 0 3vh 0 1vh">
+                                            style="width: 80px; margin: 0 20px 0 10px">
                                             <option>Period</option>
                                             <option value="2024" selected>2024</option>
                                             <option value="2023">2023</option>
@@ -419,10 +424,6 @@
     </script>
 
     <script>
-        function getUploadedFile() {
-            google.script.run.getUploadedFile()
-        }
-
         function loadPage(content) {
             document.body.innerHTML = content
         }
@@ -432,4 +433,5 @@
         }
     </script>
 </body>
+
 </html>

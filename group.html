@@ -5,7 +5,8 @@
     <base target="_top">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="/src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
     <title>BARS Group | HRMS</title>
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
@@ -45,7 +46,7 @@
             font-size: 15px;
         }
 
-        input[type="checkbox"]:disabled:checked + .form-check-label {
+        input[type="checkbox"]:disabled:checked+.form-check-label {
             color: rgb(112, 112, 112);
             font-weight: bold;
         }
@@ -75,10 +76,10 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.html" class="brand-link">
-                <div class="brand-text font-weight-semibold" style="text-align: center; color: black;">
-                    <span class="font-weight-bold" style="color: rgb(202, 8, 8);">SPIL</span>HRMS
-                </div>
+            <a href="#" class="brand-link">
+                <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
+                    class="brand-image img-circle" style="padding-left: 0; margin-left: 10px;">
+                <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
@@ -88,7 +89,8 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon"><img src="/src/spil.png" alt="logo-spil" style="width: 4vh;"></i>
+                                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+                                        alt="logo-spil" style="width: 34px;"></i>
                                 <p class="font-weight-bold" style="font-size: 10pt; padding-left: 16px;">Connecting
                                     Islands</p>
                             </a>
@@ -425,7 +427,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="detailDataModal" tabindex="-1" aria-labelledby="detailDataModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detailDataModal" tabindex="-1" aria-labelledby="detailDataModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -741,17 +744,14 @@
     </script>
 
     <script>
-        function getUploadedFile(){
-            google.script.run.getUploadedFile()
-        }
-
-        function loadPage(content){
+        function loadPage(content) {
             document.body.innerHTML = content
         }
 
-        function getPage(page){
+        function getPage(page) {
             google.script.run.withSuccessHandler(loadPage).getHtmlContent(page)
         }
     </script>
 </body>
+
 </html>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="SHORTCUT ICON" href="./src/hrms.png">
     <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
-    <title>BARS Period | HRMS</title>
+    <title>BARS Assessor | HRMS</title>
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
     <!-- Font Awesome CSS -->
@@ -20,17 +20,37 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
 
     <style>
+        a,
+        a:hover,
+        a:focus {
+            color: white;
+            text-decoration: none;
+        }
+
         th {
-            font-size: 15px;
+            font-size: 13px;
         }
 
         td {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
         }
 
         .btn-form-pop {
             padding: 4px 50px;
+        }
+
+        .btn-xs>span.font-weight-semibold {
+            font-size: 10px;
+        }
+
+        .button-like {
+            font-size: 11px;
+            display: inline-block;
+            padding: 1px 9px;
+            margin-right: 2px;
+            border-radius: 3px;
+            color: black;
         }
     </style>
 
@@ -48,9 +68,6 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
-                <!-- <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Home</a>
-            </li> -->
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -73,7 +90,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
                                         alt="logo-spil" style="width: 34px;"></i>
-                                <p class="font-weight-bold" style="font-size: 10pt; padding-left: 16px;">Connecting
+                                <p class="font-weight-bold" style="font-size: 12pt; padding-left: 16px;">Connecting
                                     Islands</p>
                             </a>
                         </li>
@@ -148,7 +165,7 @@
             <section class="content" style="padding: 4vh;">
                 <div class="container-fluid">
                     <!-- Your content goes here -->
-                    <h3 class="font-weight-bold pb-3">BARS 360 Period</h3>
+                    <h3 class="font-weight-bold pb-3">BARS 360 Assessor</h3>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -157,29 +174,68 @@
                                         <div style="display: inline-flex; justify-content: space-between; width: 100%;">
                                             <div class="left">
                                                 <div class="card-title">
-                                                    <i class="fas fa-file-lines mr-1"></i>
-                                                    <span class="font-weight-bold pl-2" style="font-size: 22px;">
-                                                        List Data</span>
+                                                    <button class="btn btn-s" style="background-color: rgb(223, 23, 23);
+                                                    color: white;">
+                                                        <a href='<?!=url?>?page=assessor'>
+                                                            <i class="fas fa-arrow-left"></i>
+                                                        </a>
+                                                    </button>
+                                                    <span class="font-weight-bold pl-4" style="font-size: 22px;">
+                                                        Assessor Details</span>
                                                 </div>
-                                            </div>
-                                            <div class="right">
-                                                <button class="btn btn-primary" style="padding: 4.5px 32px;"
-                                                    data-toggle="modal" data-target="#addDataModal">
-                                                    Add Data</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <table id="tablePeriod" class="table table-bordered table-hover table-sm"
+                                    <div class="form-group row">
+                                        <div class="col-sm-8 row">
+                                            <label for="inputID" class="col-sm-3 col-form-label">Participant ID</label>
+                                            <div class="col-sm-7"
+                                                style="padding-left:10px; padding-right: 0; margin-right: 0;">
+                                                <input type="text" class="form-control" id="inputID" value="X893JFI"
+                                                    disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4" style="display: inline-flex; justify-content: end;">
+                                            <button class="btn btn-primary"
+                                                style="padding-left: 36px; padding-right: 36px;" data-toggle="modal"
+                                                data-target="#addDataModal">
+                                                Add Data
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputGroup" class="col-sm-2 col-form-label">Participant Name</label>
+                                        <div class="col-sm-5" style="padding-right: 40px;">
+                                            <input type="text" class="form-control" id="inputID"
+                                                value="Gwawr Janek Twist" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="padding-bottom: 40px;">
+                                        <label for="inputGroup" class="col-sm-2 col-form-label">Group Name</label>
+                                        <div class="col-sm-5">
+                                            <select class="form-control-sm" name="category-by" id="category-by"
+                                                style="width: 140px; margin: 2px 20px 0 0px;">
+                                                <option selected>Pola 3</option>
+                                                <option>Pola 1</option>
+                                                <option>Pola 2</option>
+                                                <option>Pola 4</option>
+                                                <option>Pola 5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <table id="tableAssessor" class="table table-bordered table-hover table-sm"
                                         style="width: 100%;">
                                         <thead style="background-color: rgb(223, 23, 23); color: white;">
                                             <tr>
                                                 <th>No</th>
-                                                <th>Period Name</th>
-                                                <th>Active</th>
-                                                <th>Start Date</th>
-                                                <th>End Date</th>
+                                                <th>Relation</th>
+                                                <th>Assessor Name</th>
+                                                <th>Position</th>
+                                                <th>Level</th>
                                                 <th>Last Modified</th>
                                                 <th>Modified By</th>
                                                 <th>Action</th>
@@ -188,10 +244,10 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>2022</td>
-                                                <td>No</td>
-                                                <td>01/01/2022</td>
-                                                <td>31/12/2022</td>
+                                                <td>Rekan Tim</td>
+                                                <td>Thor Neilina Dubhshláin</td>
+                                                <td>A/P Core</td>
+                                                <td>Staff</td>
                                                 <td>02/01/2023 10:00</td>
                                                 <td>Chloe Haly</td>
                                                 <td>
@@ -207,11 +263,11 @@
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>2023</td>
-                                                <td>No</td>
-                                                <td>01/01/2023</td>
-                                                <td>31/12/2023</td>
-                                                <td>02/01/2024 10:00</td>
+                                                <td>Bawahan Langsung</td>
+                                                <td>Elmira Évike Abrahamsen</td>
+                                                <td>A/P Functional</td>
+                                                <td>Worker</td>
+                                                <td>02/01/2023 10:00</td>
                                                 <td>Chloe Haly</td>
                                                 <td>
                                                     <button class="btn btn-xs btn-primary mr-1">
@@ -226,20 +282,20 @@
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td>2024</td>
-                                                <td>Yes</td>
-                                                <td>01/01/2024</td>
-                                                <td>31/12/2024</td>
-                                                <td>27/03/2024 10:00</td>
+                                                <td>Atasan Langsung</td>
+                                                <td>Adi Thora Ignatov</td>
+                                                <td>A/P Core Manager</td>
+                                                <td>Middle Manager</td>
+                                                <td>02/01/2023 10:00</td>
                                                 <td>Chloe Haly</td>
                                                 <td>
                                                     <button class="btn btn-xs btn-primary mr-1" data-toggle="modal"
-                                                        data-target="#editDataModal">
+                                                    data-target="#editDataModal">
                                                         <i class="fas fa-pen-to-square pr-1"></i>
                                                         <span class="font-weight-semibold">Edit</span>
                                                     </button>
                                                     <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                        data-target="#deleteDataModal">
+                                                    data-target="#deleteDataModal">
                                                         <i class="fas fa-trash pr-1"></i>
                                                         <span class="font-weight-semibold">Delete</span>
                                                     </button>
@@ -247,6 +303,13 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="card-footer"
+                                    style="display: flex; justify-content: end; border-top: 1px solid #dee2e6; padding: 20px 20px;">
+                                    <button type="button" class="btn btn-form-pop btn-danger mr-2">
+                                        <a href="<?!=url?>?page=participant">Cancel</a>
+                                    </button>
+                                    <button type="button" class="btn btn-form-pop btn-primary">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +329,7 @@
             </strong>
             <!-- Default to the left -->
             <strong style="color: black;">
-                <a href="https://spil.co.id/">2024 SPIL</a>.
+                <a href="https://spil.co.id/" style="color:blue;">2024 SPIL</a>.
                 Crafted by HRIS & HRIS Army
             </strong>
         </footer>
@@ -278,7 +341,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addDataModalLabel">Add Data Period</h5>
+                    <h5 class="modal-title" id="addDataModalLabel">Add Data Assessor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
@@ -286,11 +349,28 @@
                 <div class="modal-body">
                     <form action="" method="POST">
                         <div class="form-group row">
-                            <label for="inputPeriod" class="col-sm-3 col-form-label">Period Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputPeriod" placeholder="Period year">
-                                <span style="color: red; font-size: 11px;" class="pl-1">*please insert period name
-                                    (year)</span>
+                            <label for="inputPattern" class="col-sm-3 col-form-label">Relation</label>
+                            <div class="col-sm-7">
+                                <select class="form-control-sm" name="relation-by" id="relation-by"
+                                    style="width: 100%; margin-top: 4px">
+                                    <option selected hidden>Relation</option>
+                                    <option>Atasan Langsung</option>
+                                    <option>Bawahan Langsung</option>
+                                    <option>Rekan Tim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPattern" class="col-sm-3 col-form-label">Assessor</label>
+                            <div class="col-sm-7">
+                                <select class="form-control-sm" name="relation-by" id="relation-by"
+                                    style="width: 100%; margin-top: 4px">
+                                    <option selected hidden>Assessor Name</option>
+                                    <option>Thor Neilina Dubhshláin</option>
+                                    <option>Konrád Fauna Bauer</option>
+                                    <option>Elmira Évike Abrahamsen</option>
+                                    <option>Adi Thora Ignatov</option>
+                                </select>
                             </div>
                         </div>
                 </div>
@@ -307,7 +387,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editDataModalLabel">Edit Data Period</h5>
+                    <h5 class="modal-title" id="editDataModalLabel">Edit Data Assessor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
@@ -315,31 +395,26 @@
                 <div class="modal-body">
                     <form action="" method="POST">
                         <div class="form-group row">
-                            <label for="inputPeriod" class="col-sm-3 col-form-label">Period Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputPeriod" value="2024" disabled>
+                            <label for="inputPattern" class="col-sm-3 col-form-label">Relation</label>
+                            <div class="col-sm-7">
+                                <select class="form-control-sm" name="relation-by" id="relation-by"
+                                    style="width: 100%; margin-top: 4px">
+                                    <option selected>Atasan Langsung</option>
+                                    <option>Bawahan Langsung</option>
+                                    <option>Rekan Tim</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputStartDate" class="col-sm-3 col-form-label">Start Date</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputStartDate" value="01/01/2024 10:00"
-                                    disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputEndDate" class="col-sm-3 col-form-label">End Date</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputEndDate" value="31/12/2024 10:00"
-                                    disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputPeriodActive" class="col-sm-3 col-form-label">Period Active?</label>
-                            <div
-                                class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success pt-2 pl-5">
-                                <input type="checkbox" class="custom-control-input" id="inputPeriodActive" checked>
-                                <label class="custom-control-label" for="inputPeriodActive"></label>
+                            <label for="inputPattern" class="col-sm-3 col-form-label">Assessor</label>
+                            <div class="col-sm-7">
+                                <select class="form-control-sm" name="relation-by" id="relation-by"
+                                    style="width: 100%; margin-top: 4px">
+                                    <option selected>Adi Thora Ignatov</option>
+                                    <option>Thor Neilina Dubhshláin</option>
+                                    <option>Konrád Fauna Bauer</option>
+                                    <option>Elmira Évike Abrahamsen</option>
+                                </select>
                             </div>
                         </div>
                 </div>
@@ -352,12 +427,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deleteDataModal" tabindex="-1" aria-labelledby="deleteDataModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="deleteDataModal" tabindex="-1" aria-labelledby="deleteDataModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteDataModalLabel">Delete Data Period</h5>
+                    <h5 class="modal-title" id="deleteDataModalLabel">Delete Data Assessor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
@@ -366,35 +440,38 @@
                     <form action="" method="POST">
                         <p>Are you sure you want to delete this data?</p>
                         <div class="form-group row">
-                            <label for="inputPeriod" class="col-sm-3 col-form-label">Period Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputPeriod" value="2024" disabled>
+                            <label for="input1" class="col-sm-3 col-form-label">Relation</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="input1" value="Atasan Langsung" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputStartDate" class="col-sm-3 col-form-label">Start Date</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputStartDate" value="01/01/2024 10:00"
-                                    disabled>
+                            <label for="input2" class="col-sm-3 col-form-label">Assessor</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="input2" value="Adi Thora Ignatov" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEndDate" class="col-sm-3 col-form-label">End Date</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputEndDate" value="31/12/2024 10:00"
-                                    disabled>
+                            <label for="input3" class="col-sm-3 col-form-label">Position</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="input3" value="A/P Core Manager" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="input4" class="col-sm-3 col-form-label">Level</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="input4" value="Level 3" disabled>
                             </div>
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-primary mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-danger">Delete</button>
+                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- REQUIRED SCRIPTS -->
     <!-- AdminLTE -->
@@ -408,8 +485,19 @@
 
     <script>
         $(document).ready(function () {
-            $('#tablePeriod').DataTable({
+            $('#tableAssessor').DataTable({
                 "lengthChange": true,
+                "autoWidth": true,
+            });
+
+            // $('#tableCompetencyDetail').DataTable();
+            $('.overlay').hide();
+
+            $('.btn-sync').click(function () {
+                $('.overlay').fadeIn();
+                setTimeout(function () {
+                    $('.overlay').fadeOut();
+                }, 2000);
             });
         });
     </script>
@@ -424,4 +512,5 @@
         }
     </script>
 </body>
+
 </html>

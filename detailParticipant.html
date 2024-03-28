@@ -5,7 +5,8 @@
     <base target="_top">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="/src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
     <title>BARS Participant | HRMS</title>
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
@@ -74,10 +75,10 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.html" class="brand-link">
-                <div class="brand-text font-weight-semibold" style="text-align: center; color: black;">
-                    <span class="font-weight-bold" style="color: rgb(202, 8, 8);">SPIL</span>HRMS
-                </div>
+            <a href="#" class="brand-link">
+                <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
+                    class="brand-image img-circle" style="padding-left: 0; margin-left: 10px;">
+                <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
@@ -87,8 +88,9 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon"><img src="/src/spil.png" alt="logo-spil" style="width: 4vh;"></i>
-                                <p class="font-weight-bold" style="font-size: 10pt; padding-left: 16px;">Connecting
+                                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+                                        alt="logo-spil" style="width: 34px;"></i>
+                                <p class="font-weight-bold" style="font-size: 12pt; padding-left: 16px;">Connecting
                                     Islands</p>
                             </a>
                         </li>
@@ -492,14 +494,48 @@
                     $('.overlay-2').fadeOut();
                 }, 1500);
             });
+
+            function toggleButton(thisBtn) {
+                // ganti yang selected ke select (abu-abu ke hijau)
+                var btnSelect = document.querySelectorAll(".btnSelect")
+                console.log(btnSelect)
+                btnSelect.forEach(function (element) {
+                    console.log(element.textContent);
+                    console.log(element.classList);
+                    if (element.classList.contains("btn-secondary")) {
+                        element.classList.replace("btn-secondary", "btn-success")
+                        var icon = element.querySelector("i")
+                        icon.style.color = "white"
+                        icon.classList.replace("pl-1", "pl-2")
+
+                        var span = element.querySelector("span")
+                        span.classList.remove("mr-0", "font-weight-semibold")
+                        span.style.color = "white"
+                        span.style.paddingLeft = ""
+                        span.style.paddingRight = ""
+                        span.innerHTML = "Select"
+                    }
+                    console.log(element.classList)
+                });
+
+                // ganti button yang diklik dari select ke selected (hijau ke abu-abu)
+                var button = document.getElementById(thisBtn.id)
+                button.classList.replace("btn-success", "btn-secondary")
+                var icon = button.querySelector("i")
+                icon.classList.replace("pl-2", "pl-1")
+                icon.style.color = "black"
+
+                var span = button.querySelector("span")
+                span.classList.add("mr-0", "font-weight-semibold")
+                span.style.color = "black"
+                span.style.paddingLeft = "8px"
+                span.style.paddingRight = "8px"
+                span.innerHTML = "Selected"
+            }
         });
     </script>
 
     <script>
-        function getUploadedFile() {
-            google.script.run.getUploadedFile()
-        }
-
         function loadPage(content) {
             document.body.innerHTML = content
         }
@@ -509,4 +545,5 @@
         }
     </script>
 </body>
+
 </html>
