@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="SHORTCUT ICON" href="./src/hrms.png">
     <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
-    <title>BARS Assessor | HRMS</title>
+    <title>BARS Behavior & Indicator | HRMS</title>
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
     <!-- Font Awesome CSS -->
@@ -165,7 +165,7 @@
             <section class="content" style="padding: 4vh;">
                 <div class="container-fluid">
                     <!-- Your content goes here -->
-                    <h3 class="font-weight-bold pb-3">BARS 360 Assessor</h3>
+                    <h3 class="font-weight-bold pb-3">BARS 360 Competency</h3>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -176,66 +176,61 @@
                                                 <div class="card-title">
                                                     <button class="btn btn-s" style="background-color: rgb(223, 23, 23);
                                                     color: white;">
-                                                        <a href='<?!=url?>?page=assessor'>
+                                                        <a href='<?!=url?>?page=competency'>
                                                             <i class="fas fa-arrow-left"></i>
                                                         </a>
                                                     </button>
                                                     <span class="font-weight-bold pl-4" style="font-size: 22px;">
-                                                        Assessor Details</span>
+                                                        Behavior & Indicator Data Configuration</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <h5 class="font-weight-bold pb-2 pt-2">Detail Competency</h5>
                                     <div class="form-group row">
-                                        <div class="col-sm-8 row">
-                                            <label for="inputID" class="col-sm-3 col-form-label">Participant ID</label>
-                                            <div class="col-sm-7"
-                                                style="padding-left:10px; padding-right: 0; margin-right: 0;">
-                                                <input type="text" class="form-control" id="inputID" value="X893JFI"
-                                                    disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4" style="display: inline-flex; justify-content: end;">
-                                            <button class="btn btn-primary"
-                                                style="padding-left: 36px; padding-right: 36px;" data-toggle="modal"
-                                                data-target="#addDataModal">
-                                                Add Data
-                                            </button>
+                                        <label for="inputCompMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Competency Name</label>
+                                        <div class="col-sm-10" style="padding-right: 40px;">
+                                            <input type="text" class="form-control" id="inputCompMain"
+                                                value="Integrity & Trust" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputGroup" class="col-sm-2 col-form-label">Participant Name</label>
-                                        <div class="col-sm-5" style="padding-right: 40px;">
-                                            <input type="text" class="form-control" id="inputID"
-                                                value="Gwawr Janek Twist" disabled>
+                                        <label for="inputDefMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Definition</label>
+                                        <div class="col-sm-10" style="padding-right: 40px;">
+                                            <input type="text" class="form-control" id="inputDefMain"
+                                                value="Mampu mendorong terciptanya pergaulan yang menjunjung etika dan norma di tingkat organisasi"
+                                                disabled>
                                         </div>
                                     </div>
-                                    <div class="form-group row" style="padding-bottom: 40px;">
-                                        <label for="inputGroup" class="col-sm-2 col-form-label">Group Name</label>
-                                        <div class="col-sm-5">
-                                            <select class="form-control-sm" name="category-by" id="category-by"
-                                                style="width: 140px; margin: 2px 20px 0 0px;">
-                                                <option selected>Pola 3</option>
-                                                <option>Pola 1</option>
-                                                <option>Pola 2</option>
-                                                <option>Pola 4</option>
-                                                <option>Pola 5</option>
-                                            </select>
+                                    <div class="form-group row">
+                                        <label for="inputCatMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Category</label>
+                                        <div class="col-sm-10" style="padding-right: 40px;">
+                                            <input type="text" class="form-control" id="inputCatMain"
+                                                value="Core Competency" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputParticipantMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Participant List</label>
+                                        <div class="col-sm-10" style="padding-right: 40px;">
+                                            <input type="text" class="form-control font-weight-bold"
+                                                id="inputParticipantMain" value="Automated with System" disabled>
                                         </div>
                                     </div>
 
-
-                                    <table id="tableAssessor" class="table table-bordered table-hover table-sm"
+                                    <h5 class="font-weight-bold pt-4">Behavior & Indicator</h5>
+                                    <table id="tableBehavIndic" class="table table-bordered table-hover table-sm"
                                         style="width: 100%;">
                                         <thead style="background-color: rgb(223, 23, 23); color: white;">
                                             <tr>
                                                 <th>No</th>
-                                                <th>Relation</th>
-                                                <th>Assessor Name</th>
-                                                <th>Position</th>
-                                                <th>Level</th>
+                                                <th>Job Level</th>
+                                                <th>Behavior</th>
                                                 <th>Last Modified</th>
                                                 <th>Modified By</th>
                                                 <th>Action</th>
@@ -244,60 +239,73 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Rekan Tim</td>
-                                                <td>Thor Neilina Dubhshláin</td>
-                                                <td>A/P Core</td>
-                                                <td>Staff</td>
+                                                <td>Level 1</td>
+                                                <td>Mampu bersikap jujur dalam perasaan & perilaku</td>
                                                 <td>02/01/2023 10:00</td>
                                                 <td>Chloe Haly</td>
                                                 <td>
-                                                    <button class="btn btn-xs btn-primary mr-1">
-                                                        <i class="fas fa-pen-to-square pr-1"></i>
-                                                        <span class="font-weight-semibold">Edit</span>
+                                                    <button class="btn btn-xs btn-warning mr-1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
                                                     </button>
-                                                    <button class="btn btn-xs btn-danger">
-                                                        <i class="fas fa-trash pr-1"></i>
-                                                        <span class="font-weight-semibold">Delete</span>
+                                                    <button class="btn btn-xs btn-primary">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
                                                     </button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>Bawahan Langsung</td>
-                                                <td>Elmira Évike Abrahamsen</td>
-                                                <td>A/P Functional</td>
-                                                <td>Worker</td>
+                                                <td>Level 2</td>
+                                                <td>Mampu bersikap sesuai dengan etika kerja dan norma yang berlaku</td>
                                                 <td>02/01/2023 10:00</td>
                                                 <td>Chloe Haly</td>
                                                 <td>
-                                                    <button class="btn btn-xs btn-primary mr-1">
-                                                        <i class="fas fa-pen-to-square pr-1"></i>
-                                                        <span class="font-weight-semibold">Edit</span>
+                                                    <button class="btn btn-xs btn-warning mr-1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
                                                     </button>
-                                                    <button class="btn btn-xs btn-danger">
-                                                        <i class="fas fa-trash pr-1"></i>
-                                                        <span class="font-weight-semibold">Delete</span>
+                                                    <button class="btn btn-xs btn-primary">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
                                                     </button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td>Atasan Langsung</td>
-                                                <td>Adi Thora Ignatov</td>
-                                                <td>A/P Core Manager</td>
-                                                <td>Middle Manager</td>
+                                                <td>Level 3</td>
+                                                <td>Mampu memahami perilaku tidak jujur di sekitar dan mendorong
+                                                    perbaikan perilaku di masa mendatang</td>
                                                 <td>02/01/2023 10:00</td>
                                                 <td>Chloe Haly</td>
                                                 <td>
-                                                    <button class="btn btn-xs btn-primary mr-1" data-toggle="modal"
-                                                    data-target="#editDataModal">
-                                                        <i class="fas fa-pen-to-square pr-1"></i>
-                                                        <span class="font-weight-semibold">Edit</span>
+                                                    <button class="btn btn-xs btn-warning mr-1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
                                                     </button>
-                                                    <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                    data-target="#deleteDataModal">
-                                                        <i class="fas fa-trash pr-1"></i>
-                                                        <span class="font-weight-semibold">Delete</span>
+                                                    <button class="btn btn-xs btn-primary">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Level 4</td>
+                                                <td>Mampu mendorong terciptanya pergaulan yang menjunjung etika dan
+                                                    norma di tingkat organisasi</td>
+                                                <td>02/01/2023 10:00</td>
+                                                <td>Chloe Haly</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-warning mr-1" data-toggle="modal"
+                                                        data-target="#detailModal1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
+                                                    </button>
+                                                    <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                                        data-target="#settingModal1">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -307,7 +315,7 @@
                                 <div class="card-footer"
                                     style="display: flex; justify-content: end; border-top: 1px solid #dee2e6; padding: 20px 20px;">
                                     <button type="button" class="btn btn-form-pop btn-danger mr-2">
-                                        <a href="<?!=url?>?page=participant">Cancel</a>
+                                        <a href="<?!=url?>?page=index">Cancel</a>
                                     </button>
                                     <button type="button" class="btn btn-form-pop btn-primary">Save</button>
                                 </div>
@@ -337,138 +345,139 @@
     <!-- ./wrapper -->
 
     <!-- Modal -->
-    <div class="modal fade" id="addDataModal" tabindex="-1" aria-labelledby="addDataModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detailModal1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addDataModalLabel">Add Data Assessor</h5>
+                    <h5 class="modal-title">Detail Behavior & Indicator Level 1</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="">
-                        <div class="form-group row">
-                            <label for="inputPattern" class="col-sm-3 col-form-label">Relation</label>
-                            <div class="col-sm-7">
-                                <select class="form-control-sm" name="relation-by" id="relation-by"
-                                    style="width: 100%; margin-top: 4px">
-                                    <option selected hidden>Relation</option>
-                                    <option>Atasan Langsung</option>
-                                    <option>Bawahan Langsung</option>
-                                    <option>Rekan Tim</option>
-                                </select>
-                            </div>
+                    <div class="form-group row pt-3">
+                        <label class="col-sm-2 col-form-label"
+                            style="padding-top: 0; margin-right: 18px;">Behavior</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" disabled
+                                style="text-align: left;">Mampu mendorong terciptanya pergaulan yang menjunjung etika dan norma di tingkat organisasi</textarea>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputPattern" class="col-sm-3 col-form-label">Assessor</label>
-                            <div class="col-sm-7">
-                                <select class="form-control-sm" name="relation-by" id="relation-by"
-                                    style="width: 100%; margin-top: 4px">
-                                    <option selected hidden>Assessor Name</option>
-                                    <option>Thor Neilina Dubhshláin</option>
-                                    <option>Konrád Fauna Bauer</option>
-                                    <option>Elmira Évike Abrahamsen</option>
-                                    <option>Adi Thora Ignatov</option>
-                                </select>
-                            </div>
+                    </div>
+                    <label for="col-form-label">Indicator</label>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="0">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Tidak menjadi cermin pelaksanaan pergaulan sesuai etika dan norma yang ada">
                         </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="1">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Menjadi pribadi yang memiliki serangkaian etika dan norma yang dipegang teguh">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="2">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Mampu mengimplementasikan etika dan norma sehingga nampak oleh orang lain">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="3">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Memberikan pengaruh kepada lingkungan sehingga orang yang berinteraksi dengannya merasakan dampak">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="4">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Menjadi panutan bagi organisasi dalam mencerminkan pergaulan berdasarkan etika dan norma yang telah ditetapkan">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
+                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="editDataModal" tabindex="-1" aria-labelledby="editDataModalLabel" aria-hidden="true">
+    <div class="modal fade" id="settingModal1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editDataModalLabel">Edit Data Assessor</h5>
+                    <h5 class="modal-title">Setting Behavior & Indicator Level 1</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                        <div class="form-group row">
-                            <label for="inputPattern" class="col-sm-3 col-form-label">Relation</label>
-                            <div class="col-sm-7">
-                                <select class="form-control-sm" name="relation-by" id="relation-by"
-                                    style="width: 100%; margin-top: 4px">
-                                    <option selected>Atasan Langsung</option>
-                                    <option>Bawahan Langsung</option>
-                                    <option>Rekan Tim</option>
-                                </select>
+                <form action="" method="">
+                    <div class="modal-body">
+                        <div class="form-group row pt-3">
+                            <label class="col-sm-2 col-form-label"
+                                style="padding-top: 0; margin-right: 18px;">Behavior</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" disabled
+                                    style="text-align: left;">Mampu mendorong terciptanya pergaulan yang menjunjung etika dan norma di tingkat organisasi</textarea>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputPattern" class="col-sm-3 col-form-label">Assessor</label>
-                            <div class="col-sm-7">
-                                <select class="form-control-sm" name="relation-by" id="relation-by"
-                                    style="width: 100%; margin-top: 4px">
-                                    <option selected>Adi Thora Ignatov</option>
-                                    <option>Thor Neilina Dubhshláin</option>
-                                    <option>Konrád Fauna Bauer</option>
-                                    <option>Elmira Évike Abrahamsen</option>
-                                </select>
+                        <label for="col-form-label">Indicator</label>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="0">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Tidak menjadi cermin pelaksanaan pergaulan sesuai etika dan norma yang ada">
                             </div>
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="deleteDataModal" tabindex="-1" aria-labelledby="deleteDataModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteDataModalLabel">Delete Data Assessor</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                        <p>Are you sure you want to delete this data?</p>
-                        <div class="form-group row">
-                            <label for="input1" class="col-sm-3 col-form-label">Relation</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="input1" value="Atasan Langsung" disabled>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="1">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Menjadi pribadi yang memiliki serangkaian etika dan norma yang dipegang teguh">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="input2" class="col-sm-3 col-form-label">Assessor</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="input2" value="Adi Thora Ignatov" disabled>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="2">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Mampu mengimplementasikan etika dan norma sehingga nampak oleh orang lain">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="input3" class="col-sm-3 col-form-label">Position</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="input3" value="A/P Core Manager" disabled>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="3">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Memberikan pengaruh kepada lingkungan sehingga orang yang berinteraksi dengannya merasakan dampak">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="input4" class="col-sm-3 col-form-label">Level</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="input4" value="Level 3" disabled>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="4">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Menjadi panutan bagi organisasi dalam mencerminkan pergaulan berdasarkan etika dan norma yang telah ditetapkan">
                             </div>
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-form-pop btn-danger mr-2"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
+                </form>
             </div>
         </div>
     </div>
@@ -485,9 +494,11 @@
 
     <script>
         $(document).ready(function () {
-            $('#tableAssessor').DataTable({
-                "lengthChange": true,
+            $('#tableBehavIndic').DataTable({
+                "lengthChange": false,
+                "searching": false,
                 "autoWidth": true,
+                "paging": false,
             });
 
             // $('#tableCompetencyDetail').DataTable();

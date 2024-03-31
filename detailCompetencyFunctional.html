@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" href="./src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
+    <title>BARS Behavior & Indicator | HRMS</title>
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Data Table -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
+
+    <style>
+        a,
+        a:hover,
+        a:focus {
+            color: white;
+            text-decoration: none;
+        }
+
+        th {
+            font-size: 13px;
+        }
+
+        td {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .btn-form-pop {
+            padding: 4px 50px;
+        }
+
+        .btn-xs>span.font-weight-semibold {
+            font-size: 10px;
+        }
+
+        .button-like {
+            font-size: 11px;
+            display: inline-block;
+            padding: 1px 9px;
+            margin-right: 2px;
+            border-radius: 3px;
+            color: black;
+        }
+    </style>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+</head>
+
+<body class="sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-light-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
+                    class="brand-image img-circle" style="padding-left: 0; margin-left: 10px;">
+                <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-4">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+                                        alt="logo-spil" style="width: 34px;"></i>
+                                <p class="font-weight-bold" style="font-size: 12pt; padding-left: 16px;">Connecting
+                                    Islands</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="form-inline mt-4">
+                        <div class="input-group mb-2" data-widget="sidebar-search">
+                            <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="true">
+                        <!-- Add more sidebar menu items here -->
+                        <? var url = getScriptUrl(); ?>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=group' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Group Level</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=relation' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Relation</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=period' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Period</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=pattern' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Pattern</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=index' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Competency</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=participant' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Participant</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=assessor' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Assessor</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content" style="padding: 4vh;">
+                <div class="container-fluid">
+                    <!-- Your content goes here -->
+                    <h3 class="font-weight-bold pb-3">BARS 360 Competency</h3>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div style="padding: 1vh 1vh 0 1vh;">
+                                        <div style="display: inline-flex; justify-content: space-between; width: 100%;">
+                                            <div class="left">
+                                                <div class="card-title">
+                                                    <button class="btn btn-s" style="background-color: rgb(223, 23, 23);
+                                                    color: white;">
+                                                        <a href='<?!=url?>?page=competency'>
+                                                            <i class="fas fa-arrow-left"></i>
+                                                        </a>
+                                                    </button>
+                                                    <span class="font-weight-bold pl-4" style="font-size: 22px;">
+                                                        Behavior & Indicator Data Configuration</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="font-weight-bold pb-2 pt-2">Detail Competency</h5>
+                                    <div class="form-group row">
+                                        <label for="inputCompMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Competency Name</label>
+                                        <div class="col-sm-10" style="padding-right: 40px;">
+                                            <input type="text" class="form-control" id="inputCompMain"
+                                                value="Data Research" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputDefMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Definition</label>
+                                        <div class="col-sm-10" style="padding-right: 40px;">
+                                            <input type="text" class="form-control" id="inputDefMain"
+                                                value="Kemampuan mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data"
+                                                disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputCatMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Category</label>
+                                        <div class="col-sm-10" style="padding-right: 40px;">
+                                            <input type="text" class="form-control" id="inputCatMain"
+                                                value="Functional Competency" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputParticipantMain" class="col-sm-2 col-form-label"
+                                            style="font-weight: 500; padding-left: 16px;">Participant List</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control font-weight-bold"
+                                                style="width: 104%;" id="inputParticipantMain"
+                                                value="Automated with System" disabled>
+                                        </div>
+                                        <button class="btn btn-primary" data-toggle="modal"
+                                            data-target="#configParticipant" style="margin-left: 34px;">
+                                            <i class="fas fa-gear pr-1"></i>
+                                            <span class="font-weight-semibold">Config</span>
+                                        </button>
+                                    </div>
+
+                                    <h5 class="font-weight-bold pt-4">Behavior & Indicator</h5>
+                                    <table id="tableBehavIndic3" class="table table-bordered table-hover table-sm"
+                                        style="width: 100%;">
+                                        <thead style="background-color: rgb(223, 23, 23); color: white;">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Job Level</th>
+                                                <th>Behavior</th>
+                                                <th>Last Modified</th>
+                                                <th>Modified By</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Level 1</td>
+                                                <td>Melaksanakan prosedur dalam mencari dan mengumpulkan data sesuai
+                                                    kebutuhan perusahaan untuk mendukung proses analisa data</td>
+                                                <td>02/01/2023 10:00</td>
+                                                <td>Chloe Haly</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-warning mr-1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
+                                                    </button>
+                                                    <button class="btn btn-xs btn-primary">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Level 2</td>
+                                                <td>Mampu melaksanakan dan mengontrol pelaksanaan oleh timnya dalam
+                                                    mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk
+                                                    mendukung proses analisa data</td>
+                                                <td>02/01/2023 10:00</td>
+                                                <td>Chloe Haly</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-warning mr-1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
+                                                    </button>
+                                                    <button class="btn btn-xs btn-primary">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Level 3</td>
+                                                <td>Menyusun strategi untuk dapat mencari dan mengumpulkan data sesuai
+                                                    kebutuhan perusahaan untuk mendukung proses analisa data</td>
+                                                <td>02/01/2023 10:00</td>
+                                                <td>Chloe Haly</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-warning mr-1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
+                                                    </button>
+                                                    <button class="btn btn-xs btn-primary">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Level 4</td>
+                                                <td>Mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai
+                                                    kebutuhan perusahaan untuk mendukung proses analisa data</td>
+                                                <td>02/01/2023 10:00</td>
+                                                <td>Chloe Haly</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-warning mr-1" data-toggle="modal"
+                                                        data-target="#detailModal1">
+                                                        <i class="fas fa-circle-info pr-1"></i>
+                                                        <span class="font-weight-semibold">Detail</span>
+                                                    </button>
+                                                    <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                                        data-target="#settingModal1">
+                                                        <i class="fas fa-gear pr-1"></i>
+                                                        <span class="font-weight-semibold">Setting</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer"
+                                    style="display: flex; justify-content: end; border-top: 1px solid #dee2e6; padding: 20px 20px;">
+                                    <button type="button" class="btn btn-form-pop btn-danger mr-2">
+                                        <a href="<?!=url?>?page=competency">Cancel</a>
+                                    </button>
+                                    <button type="button" class="btn btn-form-pop btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <strong class="float-right d-none d-sm-inline">
+                v1.0.0
+            </strong>
+            <!-- Default to the left -->
+            <strong style="color: black;">
+                <a href="https://spil.co.id/" style="color:blue;">2024 SPIL</a>.
+                Crafted by HRIS & HRIS Army
+            </strong>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="configParticipant" tabindex="-1" role="dialog" aria-labelledby="configParticipantLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="max-width: 90vw;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configParticipantLabel">Participant List Configuration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
+                        <div class="col-sm-8">
+                            <input disabled type="text" class="form-control" id="inputCompetency" value="Data Research">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputDefinition" class="col-sm-4 col-form-label">Definition</label>
+                        <div class="col-sm-8">
+                            <textarea disabled class="form-control" id="inputDefinition"
+                                style="text-align: left;">Kemampuan mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data</textarea>
+                        </div>
+                    </div>
+                    <label for="tableConfigPart" class="col-form-label mb-1">Participant List</label>
+                    <table id="tableConfigPart" class="table table-bordered table-hover table-sm" style="width: 100%;">
+                        <thead style="background-color: rgb(223, 23, 23); color: white;">
+                            <tr>
+                                <th>No</th>
+                                <th>Position</th>
+                                <th>Job Level</th>
+                                <th>Division</th>
+                                <th>Department</th>
+                                <th>Location</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Posisi A</td>
+                                <td>Level 1</td>
+                                <td>IT Infrastructure</td>
+                                <td>Information Techonology</td>
+                                <td>Karet (Kantor Utama)</td>
+                                <td>
+                                    <button class="btn btn-xs btn-success ml-1 mt-1" onclick="toggleButton(this)">
+                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                        <span class="button-like"
+                                            style="color: white; padding-right: 10px;">Select</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Posisi B</td>
+                                <td>Level 1</td>
+                                <td>IT Infrastructure</td>
+                                <td>Information Techonology</td>
+                                <td>Karet (Kantor Utama)</td>
+                                <td>
+                                    <button class="btn btn-xs btn-success ml-1 mt-1" onclick="toggleButton(this)">
+                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                        <span class="button-like"
+                                            style="color: white; padding-right: 10px;">Select</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Posisi C</td>
+                                <td>Level 2</td>
+                                <td>IT Infrastructure</td>
+                                <td>Information Techonology</td>
+                                <td>Karet (Kantor Utama)</td>
+                                <td>
+                                    <button class="btn btn-xs btn-success ml-1 mt-1" onclick="toggleButton(this)">
+                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                        <span class="button-like"
+                                            style="color: white; padding-right: 10px;">Select</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Posisi D</td>
+                                <td>Level 2</td>
+                                <td>Data Reseacher</td>
+                                <td>Operation</td>
+                                <td>Kalianak</td>
+                                <td>
+                                    <button class="btn btn-xs btn-success ml-1 mt-1" onclick="toggleButton(this)">
+                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                        <span class="button-like"
+                                            style="color: white; padding-right: 10px;">Select</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Posisi E</td>
+                                <td>Level 3</td>
+                                <td>Data Architecture</td>
+                                <td>Information Techonology</td>
+                                <td>Cabang Jakarta</td>
+                                <td>
+                                    <button class="btn btn-xs btn-success ml-1 mt-1" onclick="toggleButton(this)">
+                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                        <span class="button-like"
+                                            style="color: white; padding-right: 10px;">Select</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-form-pop btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-form-pop btn-primary" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="detailModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Behavior & Indicator Level 1</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row pt-3">
+                        <label class="col-sm-2 col-form-label"
+                            style="padding-top: 0; margin-right: 18px;">Behavior</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" disabled
+                                style="text-align: left;">Mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data</textarea>
+                        </div>
+                    </div>
+                    <label for="col-form-label">Indicator</label>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="0">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Tidak mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="1">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Mengetahui dasar guna mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data, namun membutuhkan arahan untuk mengimplementasikan dalam pekerjaan">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="2">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Dapat mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data, serta mengimplementasikan dalam pekerjaan">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="3">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Secara aktif mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data, serta memberi arahan kepada rekan tim">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2">
+                        <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                            style="padding: 0; padding-left: 14px;" type="number" value="4">
+                        <div class="col-sm-10">
+                            <input disabled class="form-control" type="text"
+                                value="Menginisiasi konsep untuk mengembangkan dan mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="settingModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Setting Behavior & Indicator Level 1</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="">
+                    <div class="modal-body">
+                        <div class="form-group row pt-3">
+                            <label class="col-sm-2 col-form-label"
+                                style="padding-top: 0; margin-right: 18px;">Behavior</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" disabled
+                                    style="text-align: left;">Mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data</textarea>
+                            </div>
+                        </div>
+                        <label for="col-form-label">Indicator</label>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="0">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Tidak mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data">
+                            </div>
+                        </div>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="1">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Mengetahui dasar guna mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data, namun membutuhkan arahan untuk mengimplementasikan dalam pekerjaan">
+                            </div>
+                        </div>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="2">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Dapat mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data, serta mengimplementasikan dalam pekerjaan">
+                            </div>
+                        </div>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="3">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Secara aktif mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data, serta memberi arahan kepada rekan tim">
+                            </div>
+                        </div>
+                        <div class="form-group row ml-2">
+                            <input disabled class="form-control col-sm-1 mr-3 font-weight-bold"
+                                style="padding: 0; padding-left: 14px;" type="number" value="4">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                    value="Menginisiasi konsep untuk mengembangkan dan mengevaluasi strategi dalam mencari dan mengumpulkan data sesuai kebutuhan perusahaan untuk mendukung proses analisa data">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-form-pop btn-danger mr-2"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- AdminLTE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Data Table -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#tableBehavIndic3').DataTable({
+                "lengthChange": false,
+                "searching": false,
+                "autoWidth": true,
+                "paging": false,
+            });
+
+            $('#tableConfigPart').DataTable({
+                "scrollCollapse": true,
+                "autoWidth": true,
+                "paging": false,
+            });
+        });
+    </script>
+
+    <script>
+        function toggleButton(button) {
+            var buttonText = button.querySelector('.button-like');
+            var buttonIcon = button.querySelector('i');
+
+            if (buttonText.textContent === 'Select') {
+                // Ubah ke Selected
+                buttonText.textContent = 'Selected';
+                buttonText.style.color = 'black';
+                buttonIcon.classList.remove('fa-check-circle');
+                buttonIcon.classList.add('fa-circle');
+                buttonIcon.style.color = 'black';
+                buttonIcon.classList.remove('pl-2');
+                buttonIcon.classList.add('pl-1');
+                buttonText.classList.add('pr-1');
+                button.classList.remove('btn-success');
+                button.classList.add('btn-secondary');
+            } else {
+                // Ubah ke Select
+                buttonText.textContent = 'Select';
+                buttonText.style.color = 'white';
+                buttonIcon.classList.remove('fa-circle');
+                buttonIcon.classList.add('fa-check-circle');
+                buttonIcon.style.color = '';
+                buttonIcon.classList.remove('pl-1');
+                buttonIcon.classList.add('pl-2');
+                buttonText.classList.remove('pr-1');
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-success');
+            }
+        }
+    </script>
+
+    <script>
+        function loadPage(content) {
+            document.body.innerHTML = content
+        }
+
+        function getPage(page) {
+            google.script.run.withSuccessHandler(loadPage).getHtmlContent(page)
+        }
+    </script>
+</body>
+</html>

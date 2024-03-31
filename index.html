@@ -1,660 +1,938 @@
+<!-- Delete data masih belum bisa, ngambil datanya masih acak -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <base target="_top">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="./src/hrms.png">
-    <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
-    <title>BARS Competency | HRMS</title>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="SHORTCUT ICON" href="./src/hrms.png">
+  <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
+  <title>BARS Competency | HRMS</title>
 
-    <!-- AdminLTE CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Data Table -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
+  <!-- AdminLTE CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Data Table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
 
-    <style>
-        li {
-            font-size: 14px;
-        }
+  <style>
+    li {
+      font-size: 14px;
+    }
 
-        a,
-        a:hover,
-        a:focus {
-            color: white;
-            text-decoration: none;
-        }
+    a,
+    a:hover,
+    a:focus {
+      color: white;
+      text-decoration: none;
+    }
 
-        th {
-            font-size: 14px;
-        }
+    th {
+      font-size: 14px;
+    }
 
-        td {
-            font-size: 13px;
-            font-weight: 500;
-        }
+    td {
+      font-size: 13px;
+      font-weight: 500;
+    }
 
-        .btn-form-pop {
-            padding: 4px 50px;
-        }
+    .btn-form-pop {
+      padding: 4px 50px;
+    }
 
-        .import-table-td {
-            text-align: justify;
-        }
-    </style>
+    .circle,
+    .navPopup {
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    .circle {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: rgb(143, 143, 143);
+      margin: 25px 2px 5px 2px;
+    }
+
+    #drop-area {
+      border: 2px dashed #ccc;
+      border-radius: 16px;
+      width: 400px;
+      margin: 16px auto;
+      padding: 16px;
+      text-align: center;
+    }
+
+    #fileElem {
+      height: 1px;
+      width: 1px;
+    }
+  </style>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 </head>
 
 <body class="sidebar-mini layout-fixed">
-    <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
 
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="#" class="brand-link">
-                <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link">
+        <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
                     class="brand-image img-circle" style="padding-left: 0; margin-left: 10px;">
-                <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
-            </a>
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar Menu -->
-                <nav class="mt-4">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+        <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
+      </a>
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-4">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
                                         alt="logo-spil" style="width: 34px;"></i>
-                                <p class="font-weight-bold" style="font-size: 10pt; padding-left: 16px;">Connecting
-                                    Islands</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="form-inline mt-4">
-                        <div class="input-group mb-2" data-widget="sidebar-search">
-                            <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                <p class="font-weight-bold" style="font-size: 10pt; padding-left: 16px;">Connecting
+                  Islands</p>
+              </a>
+            </li>
+          </ul>
+          <div class="form-inline mt-4">
+            <div class="input-group mb-2" data-widget="sidebar-search">
+              <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                                 aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-sidebar">
+              <div class="input-group-append">
+                <button class="btn btn-sidebar">
                                     <i class="fas fa-search fa-fw"></i>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="true">
-                        <!-- Add more sidebar menu items here -->
-                        <? var url = getScriptUrl(); ?>
-                        <li class="nav-item">
-                            <a href='<?!=url?>?page=group' class="nav-link">
-                                <i class="nav-icon fa-dot-circle fas"></i>
-                                <p>Group Level</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href='<?!=url?>?page=relation' class="nav-link">
-                                <i class="nav-icon fa-dot-circle fas"></i>
-                                <p>Relation</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href='<?!=url?>?page=period' class="nav-link">
-                                <i class="nav-icon fa-dot-circle fas"></i>
-                                <p>Period</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href='<?!=url?>?page=pattern' class="nav-link">
-                                <i class="nav-icon fa-dot-circle fas"></i>
-                                <p>Pattern</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href='<?!=url?>?page=index' class="nav-link">
-                                <i class="nav-icon fa-dot-circle fas"></i>
-                                <p>Competency</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href='<?!=url?>?page=participant' class="nav-link">
-                                <i class="nav-icon fa-dot-circle fas"></i>
-                                <p>Participant</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href='<?!=url?>?page=assessor' class="nav-link">
-                                <i class="nav-icon fa-dot-circle fas"></i>
-                                <p>Assessor</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
+              </div>
             </div>
-            <!-- /.sidebar -->
-        </aside>
+          </div>
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+            <!-- Add more sidebar menu items here -->
+            <? var url = getScriptUrl(); ?>
+            <li class="nav-item">
+              <a href='<?!=url?>?page=group' class="nav-link">
+                <i class="nav-icon fa-dot-circle fas"></i>
+                <p>Group Level</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href='<?!=url?>?page=relation' class="nav-link">
+                <i class="nav-icon fa-dot-circle fas"></i>
+                <p>Relation</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href='<?!=url?>?page=period' class="nav-link">
+                <i class="nav-icon fa-dot-circle fas"></i>
+                <p>Period</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href='<?!=url?>?page=pattern' class="nav-link">
+                <i class="nav-icon fa-dot-circle fas"></i>
+                <p>Pattern</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href='<?!=url?>?page=index' class="nav-link">
+                <i class="nav-icon fa-dot-circle fas"></i>
+                <p>Competency</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href='<?!=url?>?page=participant' class="nav-link">
+                <i class="nav-icon fa-dot-circle fas"></i>
+                <p>Participant</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href='<?!=url?>?page=assessor' class="nav-link">
+                <i class="nav-icon fa-dot-circle fas"></i>
+                <p>Assessor</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content" style="padding: 4vh;">
-                <div class="container-fluid">
-                    <!-- Your content goes here -->
-                    <h3 class="font-weight-bold pb-3">BARS 360 Competency</h3>
-                    <!-- Content Filter -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card p-4">
-                                <div class="card-title mb-2">
-                                    <i class="fas fa-filter mr-1"></i>
-                                    <span class="font-weight-bold pl-2" style="font-size: 20px;">Filter</span>
-                                </div>
-                                <div style="display: inline-flex; justify-content: space-between;">
-                                    <div class="left">
-                                        <span class="font-weight-semibold">by Period :</span>
-                                        <select class="form-control-sm" name="period-by" id="period-by"
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content" style="padding: 4vh;">
+        <div class="container-fluid">
+          <!-- Your content goes here -->
+          <h3 class="font-weight-bold pb-3">BARS 360 Competency</h3>
+          <!-- Content Filter -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card p-4">
+                <div class="card-title mb-2">
+                  <i class="fas fa-filter mr-1"></i>
+                  <span class="font-weight-bold pl-2" style="font-size: 20px;">Filter</span>
+                </div>
+                <div style="display: inline-flex; justify-content: space-between;">
+                  <div class="left">
+                    <span class="font-weight-semibold">by Period :</span>
+                    <select class="form-control-sm" name="period-by" id="period-by"
                                             style="width: 80px; margin: 0 14px 0 6px">
                                             <option>Period</option>
                                             <option value="2024" selected>2024</option>
                                             <option value="2023">2023</option>
                                             <option value="2022">2022</option>
                                         </select>
-                                        <span class="font-weight-semibold">Category :</span>
-                                        <select class="form-control-sm" name="category-by" id="category-by"
+                    <span class="font-weight-semibold">Category :</span>
+                    <select class="form-control-sm" name="category-by" id="category-by"
                                             style="width: 120px; margin: 0 20px 0 6px">
                                             <option selected>Competency</option>
                                             <option value="Core">Core</option>
                                             <option value="Managerial">Managerial</option>
                                             <option value="Function">Function</option>
                                         </select>
-                                        <button class="btn btn-sm btn-primary"
+                    <button class="btn btn-sm btn-primary"
                                             style="padding: 4px 36px; margin-bottom: 2.25px;">Apply</button>
-                                    </div>
-                                    <div class="right">
-                                        <button class="btn btn-sm btn-warning mr-2" data-toggle="modal"
+                  </div>
+                  <div class="right">
+                    <button class="btn btn-sm btn-secondary mr-2" data-toggle="modal" id="btnSync" disabled
                                             data-target="#syncDataModal">
                                             <i class="fa fa-rotate pr-2"></i>
                                             Synchronize
                                         </button>
-                                        <button class="btn btn-sm btn-success" data-toggle="modal"
+                    <button class="btn btn-sm btn-secondary" data-toggle="modal" id="btnImport" disabled
                                             data-target="#importDataModal">
                                             <i class="fa fa-upload pr-2"></i>
                                             Import Data
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Content Filter -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div style="padding: 1vh 1vh 0 1vh;">
-                                        <div style="display: inline-flex; justify-content: space-between; width: 100%;">
-                                            <div class="left">
-                                                <div class="card-title">
-                                                    <i class="fas fa-file-lines mr-1"></i>
-                                                    <span class="font-weight-bold pl-2" style="font-size: 22px;">List
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Content Filter -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <div style="padding: 1vh 1vh 0 1vh;">
+                    <div style="display: inline-flex; justify-content: space-between; width: 100%;">
+                      <div class="left">
+                        <div class="card-title">
+                          <i class="fas fa-file-lines mr-1"></i>
+                          <span class="font-weight-bold pl-2" style="font-size: 22px;">List
                                                         Data</span>
-                                                </div>
-                                            </div>
-                                            <div class="right">
-                                                <button class="btn btn-primary" style="padding: 4.5px 32px;"
+                        </div>
+                      </div>
+                      <div class="right">
+                        <button class="btn btn-primary" style="padding: 4.5px 32px;"
                                                     data-toggle="modal" data-target="#addDataModal">Add Data</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <table id="tableCompetency" class="table table-bordered table-hover table-sm"
-                                        style="width: 100%;">
-                                        <thead style="background-color: rgb(223, 23, 23); color: white;">
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Competency Name</th>
-                                                <th>Category</th>
-                                                <th>Last Modified</th>
-                                                <th>Modified By</th>
-                                                <th>Behavior & Indicator</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- <tr>
-                                                <td>1</td>
-                                                <td>Integrity & Trust</td>
-                                                <td>Core</td>
-                                                <td>02/01/2023 10:00</td>
-                                                <td>Chloe Haly</td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-primary mr-1">
-                                                        <a href='<?!=url?>?page=detailCompetency'>
-                                                            <i class="fas fa-gear pr-1"></i>
-                                                            <span class="font-weight-semibold">Config</span>
-                                                        </a>
-                                                    </button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-warning mr-1" data-toggle="modal"
-                                                        data-target="#detailDataModal">
-                                                        <i class="fas fa-circle-info pr-1"></i>
-                                                        <span class="font-weight-semibold">Detail</span>
-                                                    </button>
-                                                    <button class="btn btn-xs btn-primary mr-1" data-toggle="modal"
-                                                        data-target="#editDataModal">
-                                                        <i class="fas fa-pen-to-square pr-1"></i>
-                                                        <span class="font-weight-semibold">Edit</span>
-                                                    </button>
-                                                    <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                        data-target="#deleteDataModal">
-                                                        <i class="fas fa-trash pr-1"></i>
-                                                        <span class="font-weight-semibold">Delete</span>
-                                                    </button>
-                                                </td>
-                                            </tr> -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
+                <div class="card-body">
+                  <table id="tableCompetency" class="table table-bordered table-hover table-sm" style="width: 100%;">
+                    <thead style="background-color: rgb(223, 23, 23); color: white;">
+                      <tr>
+                        <th>No</th>
+                        <th>Competency Name</th>
+                        <th>Category</th>
+                        <th>Last Modified</th>
+                        <th>Modified By</th>
+                        <th>Behavior & Indicator</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="competencyTable">
 
-        <!-- Main Footer -->
-        <footer class="main-footer">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
             <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
+            <strong class="float-right d-none d-sm-inline">
                 v1.0.0
-            </div>
+            </strong>
             <!-- Default to the left -->
-            <strong>2024 SPIL. Crafted by HRIS & HRIS Army</strong>
-        </footer>
-    </div>
-    <!-- ./wrapper -->
+            <strong style="color: black;">
+                <a href="https://spil.co.id/" style="color:blue;">2024 SPIL</a>.
+                Crafted by HRIS & HRIS Army
+            </strong>
+    </footer>
+  </div>
+  <!-- ./wrapper -->
 
-    <!-- Modal Import / Syncron -->
-    <div class="modal fade" id="syncDataModal" tabindex="-1" aria-labelledby="syncDataModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addDataModalLabel">Syncronize Competency Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                        <p>Please select the period to synchronize data for the current period.</p>
-                        <div class="form-group row">
-                            <label for="inputPeriod" class="col-sm-5 col-form-label">Current Period</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputPeriod" value="2024" disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputDefinition" class="col-sm-5 col-form-label">Sycnhronize from Period</label>
-                            <div class="col-sm-4">
-                                <select class="form-control-sm" name="period-by" id="period-by"
-                                    style="width: 145px; margin: 4px 0 0 0" required>
-                                    <option selected disabled hidden>Period</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2020">2020</option>
-                                </select>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
-                </div>
+  <!-- Modal Import / Syncron -->
+  <div class="modal fade" id="syncDataModal" tabindex="-1" aria-labelledby="syncDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addDataModalLabel">Syncronize Competency Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
+                  </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="">
+            <p>Please select the period to synchronize data for the current period.</p>
+            <div class="form-group row">
+              <label for="inputPeriod" class="col-sm-5 col-form-label">Current Period</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputPeriod" value="2024" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputDefinition" class="col-sm-5 col-form-label">Sycnhronize from Period</label>
+              <div class="col-sm-4">
+                <select class="form-control-sm" name="period-by" id="period-by"
+                                  style="width: 145px; margin: 4px 0 0 0" required>
+                                  <option selected disabled hidden>Period</option>
+                                  <option value="2023">2023</option>
+                                  <option value="2022">2022</option>
+                                  <option value="2021">2021</option>
+                                  <option value="2020">2020</option>
+                              </select>
+              </div>
             </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="modal fade" id="importDataModal" tabindex="-1" aria-labelledby="importDataModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addDataModalLabel">Import Competency Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal fade" id="importDataModal" tabindex="-1" aria-labelledby="importDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="importDataModalLabel">Import Competency Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
+                  </button>
+        </div>
+        <div id="page1">
+          <form action="" method="">
+            <div class="modal-body" style="padding-bottom: 0; width: 100%;">
+              <p class="mt-1 mb-1">Please note the conditions below :</p>
+              <table class="table table-bordered table-sm" style="width: 100%;">
+                <thead style="background-color: rgb(223, 23, 23); color: white;">
+                  <tr>
+                    <th>Competency Name</th>
+                    <th>Definition</th>
+                    <th>Category</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Integrity & Trust</td>
+                    <td>Mampu mendorong terciptanya...</td>
+                    <td>Core</td>
+                  </tr>
+                  <tr>
+                    <td>Organizational Awareness</td>
+                    <td>Memahami kondisi politik organisasi...</td>
+                    <td>Managerial</td>
+                  </tr>
+                  <tr>
+                    <td>Analytical Thinking</td>
+                    <td>Kemampuan untuk memahami...</td>
+                    <td>Functional</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="mt-3 mb-1 font-weight-bold" style="font-size: 15px;">Notes :</p>
+              <ol style="margin-left: 0; padding-left: 28px; padding-right: 4px;">
+                <li>Make sure your file is in excel or csv format.</li>
+                <li>The header and content of each column can be customized as shown in the example
+                  above.
+                </li>
+                <li>Or you can download the template <a style="color: blue; text-decoration: underline;"
+                    class="font-weight-semibold"
+                    href="https://docs.google.com/spreadsheets/d/1wGUbtxcdoCiaFFLp02WduDflBkqA2x7t/export?format=xlsx"
+                    target="_blank">here</a>.
+                </li>
+              </ol>
+              <div class="form-check" style="margin-top: 12px;">
+                <input class="form-check-input-1" type="checkbox" id="terms-checkbox">
+                <label class="form-check-label font-weight-bold"
+                                  style="font-size: 14px; padding-left: 10px;">I have read and understood the terms
+                                  and conditions.</label>
+              </div>
+              <div class="navPopup" style="text-align: center;">
+                <span class="circle" style="background-color: #007bff;"></span>
+                <span class="circle"></span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="cancel-btn" class="btn btn-form-pop btn-danger mr-2"
+                              data-dismiss="modal">Cancel</button>
+              <button type="button" id="nextbtn" class="btn btn-form-pop btn-secondary mr-2"
+                              style="padding-left: 55px; padding-right: 55px;" disabled>Next</button>
+            </div>
+          </form>
+        </div>
+        <div id="page2" style="padding-bottom: 0; display: none;  width: 100%;">
+          <form action="" method="">
+            <div class="modal-body" style="padding: 20px; padding-left: 30px; padding-right: 30px; padding-bottom: 0;">
+              <p class="mb-1">Import File (excel or csv) :</p>
+              <div id="drop-area" class="row" style="display: flex; justify-content: space-between; 
+                          padding-left: 40px;">
+                <div class="left" style="margin-right: 50px; margin-top: 10px;">
+                  <i class="fas fa-cloud-arrow-up fa-5x"></i>
+                </div>
+                <div class="right" style="vertical-align: middle; margin-right: 30px;">
+                  <div style="margin: 0; padding: 0;">
+                    <p style="margin-bottom: 5px;">Drag and drop file here</p>
+                  </div>
+                  <div style="margin: 0; padding: 0;">
+                    <p style="margin-bottom: 5px;"><strong>or</strong></p>
+                  </div>
+                  <form action="">
+                    <input type="file" id="fileElem" accept=".xls,.xlsx"
+                                          onchange="handleFiles(this.files)">
+                    <button type="button" id="browseBtn" class="btn btn-primary">Browse for
+                                          file</button>
+                  </form>
+                </div>
+              </div>
+              <div class="form-group row mt-3 ml-2 mr-2">
+                <label for="fileList" class="col-sm-5 col-form-label">Uploaded file name</label>
+                <div class="col-sm-7">
+                  <input style="width: 100%;" type="text" class="form-control-sm pl-0 pt-1"
+                                      id="fileList" disabled>
+                </div>
+              </div>
+              <div class="navPopup" style="text-align: center;">
+                <span class="circle"></span>
+                <span class="circle" style="background-color: #007bff;"></span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="previousbtn" class="btn btn-form-pop btn-danger mr-2"
+                              style="padding-right: 42px; padding-left: 42px;">Previous</button>
+              <button type="submit" id="btnImport" class="btn btn-form-pop btn-primary"
+                              style="padding-right: 34px; padding-left: 34px;" onclick="getUploadedToDatabase()" data-dismiss="modal">Import
+                              File</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal CRUD Competency -->
+  <div class="modal fade" id="addDataModal" tabindex="-1" aria-labelledby="addDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addDataModalLabel">Add Data Competency</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body" id="page-1">
-                    <form action="" method="">
-                        <p class="mt-3 mb-1">Please note the conditions below :</p>
-                        <table class="table table-bordered table-sm" style="width: 100%;">
-                            <thead style="background-color: rgb(223, 23, 23); color: white;">
-                                <tr>
-                                    <th>Competency Name</th>
-                                    <th>Definition</th>
-                                    <th>Category</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="import-table-td">Integrity & Trust</td>
-                                    <td class="import-table-td">Mampu mendorong terciptanya...</td>
-                                    <td class="import-table-td">Core</td>
-                                </tr>
-                                <tr>
-                                    <td class="import-table-td">Organizational Awareness</td>
-                                    <td class="import-table-td">Memahami kondisi politik organisasi...</td>
-                                    <td class="import-table-td">Managerial</td>
-                                </tr>
-                                <tr>
-                                    <td class="import-table-td">Analytical Thinking</td>
-                                    <td class="import-table-td">Kemampuan untuk memahami...</td>
-                                    <td class="import-table-td">Functional</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="mt-3 mb-1 font-weight-bold" style="font-size: 15px;">Notes :</p>
-                        <ol style="margin-left: 0; padding-left: 28px; padding-right: 4px;">
-                            <li>Make sure your file is in excel or csv format.</li>
-                            <li>The header and content of each column can be customized as shown in the example above.
-                            </li>
-                            <li>Or you can download the template <a style="color: blue; text-decoration: underline;"
-                                    class="font-weight-semibold"
-                                    href="https://docs.google.com/spreadsheets/d/1wGUbtxcdoCiaFFLp02WduDflBkqA2x7t/export?format=xlsx"
-                                    target="_blank">here</a>.
-                            </li>
-                        </ol>
-                        <div class="form-check" style="margin-top: 12px;">
-                            <input class="form-check-input-1" type="checkbox" id="terms-checkbox">
-                            <label class="form-check-label font-weight-bold"
-                                style="font-size: 14px; padding-left: 10px;">I have read and understood the terms and
-                                conditions.</label>
-                        </div>
-                </div>
-                <div class="modal-body" id="page-2">
-                    <div class="from-group">
-                        <input type="text" class="form-group">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="cancel-btn" class="btn btn-form-pop btn-danger mr-2"
-                        data-dismiss="modal">Cancel</button>
-                    <button type="button" id="next-btn" class="btn btn-form-pop btn-primary mr-2"
-                        style="padding-left: 55px; padding-right: 55px;" disabled>Next</button>
-                    <button type="submit" id="save-btn" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
-                </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="competencyName" placeholder="Competency Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputDefinition" class="col-sm-4 col-form-label">Definition</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" id="competencyDef" placeholder="Definition"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputCategory" class="col-sm-4 col-form-label">Category</label>
+            <div class="col-sm-8">
+              <select class="form-control-sm" name="competencyType" id="competencyType"
+                                style="width: 120px; margin-top: 5px">
+                                <option selected hidden>Competency</option>
+                                <option value="Core">Core</option>
+                                <option value="Managerial">Managerial</option>
+                                <option value="Functional">Functional</option>
+                            </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btnCancel" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
+          <button id="addCompetency" class="btn btn-form-pop btn-primary" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="detailDataModal" tabindex="-1" aria-labelledby="detailDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editDataModalLabel">Detail Data Competency</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
+                    </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="">
+            <div class="form-group row">
+              <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
+              <div class="col-sm-8">
+                <input disabled type="text" class="form-control" id="inputCompetencyDetail">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputDefinition" class="col-sm-4 col-form-label">Definition</label>
+              <div class="col-sm-8">
+                <textarea disabled class="form-control" id="inputDefinitionDetail"
+                                    style="text-align: left;"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inpuategory" class="col-sm-4 col-form-label">Category</label>
+              <div class="col-sm-8">
+                <input disabled type="text" class="form-control" id="inputCategoryDetail">
+              </div>
             </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Modal CRUD Competency -->
-    <div class="modal fade" id="addDataModal" tabindex="-1" aria-labelledby="addDataModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addDataModalLabel">Add Data Competency</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal fade" id="editDataModal" tabindex="-1" aria-labelledby="editDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editDataModalLabel">Edit Data Competency</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST">
-                        <div class="form-group row">
-                            <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputCompetency"
-                                    placeholder="Competency Name">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputDefinition" class="col-sm-4 col-form-label">Definition</label>
-                            <div class="col-sm-8">
-                                <textarea class="form-control" id="inputDefinition" placeholder="Definition"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputCategory" class="col-sm-4 col-form-label">Category</label>
-                            <div class="col-sm-8">
-                                <select class="form-control-sm" name="category-by" id="category-by"
+        </div>
+        <div class="modal-body">
+          <form action="" method="">
+            <div class="form-group row">
+              <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputCompetencyEdit">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputDefinitionEdit" class="col-sm-4 col-form-label">Definition</label>
+              <div class="col-sm-8">
+                <textarea class="form-control" id="inputDefinitionEdit" style="text-align: left;"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputCategoryEdit" class="col-sm-4 col-form-label">Category</label>
+              <div class="col-sm-8">
+                <select id="inputCategoryEdit" class="form-control-sm" name="category-by" id="category-by"
                                     style="width: 120px; margin-top: 5px">
-                                    <option selected>Competency</option>
                                     <option value="Core">Core</option>
                                     <option value="Managerial">Managerial</option>
                                     <option value="Function">Function</option>
                                 </select>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
-                </div>
+              </div>
             </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-form-pop btn-primary" data-dismiss="modal">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="modal fade" id="detailDataModal" tabindex="-1" aria-labelledby="detailDataModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editDataModalLabel">Detail Data Competency</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal fade" id="deleteDataModal" tabindex="-1" aria-labelledby="deleteDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteDataModalLabel">Delete Data Competency</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST">
-                        <div class="form-group row">
-                            <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
-                            <div class="col-sm-8">
-                                <input disabled type="text" class="form-control" id="inputCompetency"
-                                    value="Integrity & Trust">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputDefinition" class="col-sm-4 col-form-label">Definition</label>
-                            <div class="col-sm-8">
-                                <textarea disabled class="form-control" id="inputDefinition"
-                                    style="text-align: left;">Mampu mendorong terciptanya pergaulan yang menjunjung etika dan norma di tingkat organisasi</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inpuategory" class="col-sm-4 col-form-label">Category</label>
-                            <div class="col-sm-8">
-                                <input disabled type="text" class="form-control" id="inputCategory" value="Core">
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
-                </div>
+        </div>
+        <div class="modal-body">
+          <form action="" method="">
+            <p>Are you sure you want to delete this data?</p>
+            <div class="form-group row">
+              <label for="inputCompetencyDelete" class="col-sm-4 col-form-label">Competency Name</label>
+              <div class="col-sm-8">
+                <input disabled type="text" class="form-control" id="inputCompetencyDelete">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputDefinitionDelete" class="col-sm-4 col-form-label">Definition</label>
+              <div class="col-sm-8">
+                <textarea disabled class="form-control" id="inputDefinitionDelete"
+                                    style="text-align: left;"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputCategoryDelete" class="col-sm-4 col-form-label">Category</label>
+              <div class="col-sm-8">
+                <input disabled type="text" class="form-control" id="inputCategoryDelete">
+              </div>
             </div>
         </div>
-    </div>
-
-    <div class="modal fade" id="editDataModal" tabindex="-1" aria-labelledby="editDataModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editDataModalLabel">Edit Data Competency</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST">
-                        <div class="form-group row">
-                            <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputCompetency" value="Integrity & Trust">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputDefinition" class="col-sm-4 col-form-label">Definition</label>
-                            <div class="col-sm-8">
-                                <textarea class="form-control" id="inputDefinition"
-                                    style="text-align: left;">Mampu mendorong terciptanya pergaulan yang menjunjung etika dan norma di tingkat organisasi</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputCategory" class="col-sm-4 col-form-label">Category</label>
-                            <div class="col-sm-8">
-                                <select class="form-control-sm" name="category-by" id="category-by"
-                                    style="width: 120px; margin-top: 5px">
-                                    <option selected>Core</option>
-                                    <option value="Managerial">Managerial</option>
-                                    <option value="Function">Function</option>
-                                </select>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-primary">Save</button>
-                    </form>
-                </div>
-            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-form-pop btn-primary mr-2" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-form-pop btn-danger" data-dismiss="modal" id="btnDeleteConfirm">Delete</button>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="modal fade" id="deleteDataModal" tabindex="-1" aria-labelledby="deleteDataModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteDataModalLabel">Delete Data Competency</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST">
-                        <p>Are you sure you want to delete this data?</p>
-                        <div class="form-group row">
-                            <label for="inputCompetency" class="col-sm-4 col-form-label">Competency Name</label>
-                            <div class="col-sm-8">
-                                <input disabled type="text" class="form-control" id="inputCompetency"
-                                    value="Integrity & Trust">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputDefinition" class="col-sm-4 col-form-label">Definition</label>
-                            <div class="col-sm-8">
-                                <textarea disabled class="form-control" id="inputDefinition"
-                                    style="text-align: left;">Mampu mendorong terciptanya pergaulan yang menjunjung etika dan norma di tingkat organisasi</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inpuategory" class="col-sm-4 col-form-label">Category</label>
-                            <div class="col-sm-8">
-                                <input disabled type="text" class="form-control" id="inputCategory" value="Core">
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-form-pop btn-primary mr-2" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-form-pop btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+  <!-- REQUIRED SCRIPTS -->
+  <!-- AdminLTE -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Data Table -->
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
-    <!-- REQUIRED SCRIPTS -->
-    <!-- AdminLTE -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Data Table -->
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+  <script>
+    // Mendapatkan referensi ke elemen HTML
+    var termsCheckbox = document.getElementById('terms-checkbox');
+    var nextBtn = document.getElementById('nextbtn');
+    var previousBtn = document.getElementById('previousbtn');
+    var page1 = document.getElementById('page1');
+    var page2 = document.getElementById('page2');
+    var browseBtn = document.getElementById('browseBtn');
+    var fileElem = document.getElementById('fileElem');
 
-    <script>
-        $(document).ready(function () {
-            $('#tableCompetency').DataTable({
-                "lengthChange": true,
+    // Menambahkan event listener untuk perubahan pada checkbox syarat
+    termsCheckbox.addEventListener('change', function () {
+        if (termsCheckbox.checked) {
+            nextBtn.removeAttribute('disabled');
+            nextBtn.classList.add('btn-primary');
+            nextBtn.classList.remove('btn-secondary');
+        } else {
+            nextBtn.setAttribute('disabled', 'disabled');
+            nextBtn.classList.remove('btn-primary');
+            nextBtn.classList.add('btn-secondary');
+        }
+    });
+
+    // Menambahkan event listener untuk tombol next
+    nextBtn.addEventListener('click', function () {
+        page1.style.display = 'none';
+        page2.style.display = 'inline';
+    });
+
+    // Menambahkan event listener untuk tombol previous
+    previousBtn.addEventListener('click', function () {
+        page1.style.display = 'inline';
+        page2.style.display = 'none';
+    });
+
+    // Menambahkan event listener untuk tombol "Browse for file"
+    browseBtn.addEventListener('click', function () {
+        fileElem.click();
+    });
+
+    // Fungsi yang akan dijalankan saat file dipilih
+    function handleFiles(files) {
+        console.log(files);
+        var fileName = files[0].name;
+        document.getElementById('fileList').value = fileName;
+    }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      google.script.run.withSuccessHandler(function(data){
+        console.log("document")
+        console.log(data)
+        console.log("data length: " + data.length)
+        if(data.length > 0){
+          for(let index=0; index<data.length; index++){
+            var row = document.createElement("tr")
+
+            // number
+            var cell = document.createElement("td")
+            cell.textContent = index+1
+            row.appendChild(cell)
+
+            console.log("data index length: " + data[index].length)
+            for(let i=0; i<data[index].length; i++){
+              var cell = document.createElement("td")
+              if(i!=1){
+                cell.textContent = data[index][i]
+                row.appendChild(cell)
+              } else {
+                row.dataset.definition = data[index][i]
+              }
+            }
+
+            // last modified
+            var cell = document.createElement("td")
+            cell.textContent = "30/03/2024 - 10:19"
+            row.appendChild(cell)
+
+            // modified by
+            var cell = document.createElement("td")
+            cell.textContent = "Chloe Haly"
+            row.appendChild(cell)
+
+            // Buttons Behaviour & Indicator
+            var cell = document.createElement("td")
+
+            var btnConfig = document.createElement("button")
+            btnConfig.className = "btn btn-xs btn-primary mr-1"
+
+            // dalam btn config
+            var aHref = document.createElement("a")
+
+            var category = data[index][2];
+            switch(category) {
+                case "Core":
+                    aHref.setAttribute("href", "<?!=url?>?page=detailCompetencyCore");
+                    break;
+                case "Managerial":
+                    aHref.setAttribute("href", "<?!=url?>?page=detailCompetencyManagerial");
+                    break;
+                case "Functional":
+                    aHref.setAttribute("href", "<?!=url?>?page=detailCompetencyFunctional");
+                    break;
+                default:
+                    aHref.setAttribute("href", "<?!=url?>?page=detailCompetencyCore");
+            }
+
+            // dalam aHref
+            var icon = document.createElement("i")
+            icon.className = "fas fa-gear pr-1"
+
+            aHref.appendChild(icon)
+            aHref.innerHTML += "Setting"
+            btnConfig.appendChild(aHref)
+            cell.appendChild(btnConfig)
+            row.appendChild(cell)
+
+            // Buttons Detail
+            var cell = document.createElement("td")
+
+            var btnDetail = document.createElement("button")
+            btnDetail.className = "btn btn-xs btn-warning mr-1"
+            btnDetail.setAttribute("data-toggle", "modal")
+            btnDetail.setAttribute("data-target", "#detailDataModal")
+
+            var icon = document.createElement("i")
+            icon.className = "fas fa-circle-info pr-1"
+
+            btnDetail.appendChild(icon)
+            btnDetail.appendChild(document.createTextNode(" Detail"));
+            cell.appendChild(btnDetail)
+
+            btnDetail.addEventListener('click', function() {
+                var rowData = this.closest('tr').querySelectorAll('td');
+                var definition = this.closest('tr').dataset.definition;
+                var competencyName = rowData[1].textContent;
+                var category = rowData[2].textContent;
+                
+                // Mengisi data ke dalam modal
+                document.getElementById('inputCompetencyDetail').value = competencyName;
+                document.getElementById('inputDefinitionDetail').textContent = definition;
+                document.getElementById('inputCategoryDetail').value = category;
             });
 
-            $('#terms-checkbox').onChange({
+            // Buttons Edit
+            var btnEdit = document.createElement("button")
+            btnEdit.className = "btn btn-xs btn-primary mr-1"
+            btnEdit.setAttribute("data-toggle", "modal")
+            btnEdit.setAttribute("data-target", "#editDataModal")
 
-            })
+            var icon = document.createElement("i")
+            icon.className = "fas fa-pen-to-square pr-1"
 
-            // Fungsi untuk mengatur tampilan tombol dan checkbox sesuai dengan halaman yang aktif
-            function toggleButtons(page) {
-                if (page === "page-1") {
-                    document.getElementById("next-btn").style.display = "block";
-                    document.getElementById("save-btn").style.display = "none";
-                    // Mengecek status checkbox
-                    if (document.getElementById("terms-checkbox").checked) {
-                        document.getElementById("next-btn").disabled = false;
-                    } else {
-                        document.getElementById("next-btn").disabled = true;
-                    }
-                } else if (page === "page-2") {
-                    document.getElementById("next-btn").style.display = "none";
-                    document.getElementById("save-btn").style.display = "block";
-                }
-            }
+            btnEdit.appendChild(icon)
+            btnEdit.appendChild(document.createTextNode(" Edit"));
+            cell.appendChild(btnEdit)
+            row.appendChild(cell)
 
-            // Fungsi untuk memindahkan antar halaman dan mengatur tampilan tombol dan checkbox
-            function switchPage(page) {
-                toggleButtons(page);
-                document.getElementById("page-1").style.display = (page === "page-1") ? "block" : "none";
-                document.getElementById("page-2").style.display = (page === "page-2") ? "block" : "none";
-            }
+            btnEdit.addEventListener('click', function() {
+                var rowData = this.closest('tr').querySelectorAll('td'); // Mendapatkan semua kolom pada baris terkait
+                // Menyimpan informasi yang sesuai ke dalam variabel
+                var definition = this.closest('tr').dataset.definition;
+                var competencyName = rowData[1].textContent;
+                var category = rowData[2].textContent;
+                
+                // Mengisi data ke dalam modal
+                document.getElementById('inputCompetencyEdit').value = competencyName;
+                document.getElementById('inputDefinitionEdit').textContent = definition;
+                document.getElementById('inputCategoryEdit').value = category;
+            });
 
-            // Memanggil fungsi toggleButtons saat halaman dimuat
-            toggleButtons("page-1");
-        });
-    </script>
+            // Buttons Delete
+            var btnDeteleConfirm = document.getElementById("btnDeleteConfirm")
+            var btnDelete = document.createElement("button")
+            btnDelete.className = "btn btn-xs btn-danger mr-1"
+            btnDelete.setAttribute("data-toggle", "modal")
+            btnDelete.setAttribute("data-target", "#deleteDataModal")
 
-    <script>
-        function getUploadedFile() {
-            google.script.run.getUploadedFile()
+            var icon = document.createElement("i")
+            icon.className = "fas fa-trash pr-1"
+
+            btnDelete.appendChild(icon)
+            btnDelete.appendChild(document.createTextNode(" Delete"));
+            cell.appendChild(btnDelete)
+            row.appendChild(cell)
+
+            document.getElementById("competencyTable").appendChild(row)
+
+            var deleteData = { }
+
+            btnDelete.addEventListener('click', function() {
+              var rowData = this.closest('tr').querySelectorAll('td');
+              var definition = this.closest('tr').dataset.definition;
+              var competencyName = rowData[1].textContent;
+              var category = rowData[2].textContent;
+              
+              deleteData.index = Array.from(this.closest('tr').parentNode.children).indexOf(this.closest('tr'));
+              deleteData.competencyName = rowData[1].textContent;
+              deleteData.definition = this.closest('tr').dataset.definition;
+              deleteData.category = rowData[2].textContent;
+
+              document.getElementById('inputCompetencyDelete').value = competencyName;
+              document.getElementById('inputDefinitionDelete').textContent = definition;
+              document.getElementById('inputCategoryDelete').value = category;
+            });
+
+            // btnDeteleConfirm.addEventListener("click", function(){
+            //     var deleteDataParsed = deleteData;
+            //     var table = document.getElementById("competencyTable");
+                
+            //     var competencyNames = deleteDataParsed.competencyName
+            //     table.deleteRow(deleteDataParsed.index);
+            //     google.script.run.deleteData(deleteDataParsed.index);   
+            //     alert("You are deleting data: " + competencyNames);
+            // });
+
+            // btnDeteleConfirm.addEventListener("click", function(){
+            //   google.script.run.deleteData(index)
+            //   alert("you're deleting data " + data[index][0])
+            // });
+            console.log(row)
+          }
+        } else {
+          var btnSyncC = document.getElementById("btnSync")
+          var btnImportC = document.getElementById("btnImport")
+
+          btnSyncC.classList.remove("btn-secondary");
+          btnSyncC.classList.add("btn-warning");
+          btnSyncC.disabled = false
+          
+          btnImportC.classList.remove("btn-secondary");
+          btnImportC.classList.add("btn-success");
+          btnImportC.disabled = false
+
+          var row = document.createElement("tr")
+
+          var cell = document.createElement("td")
+          cell.textContent = "No data available in table"
+          cell.setAttribute("colspan", "7")
+          row.appendChild(cell)
+
+          row.style.verticalAlign = "middle"
+          row.style.textAlign = "center"
+
+          document.getElementById("competencyTable").appendChild(row)
         }
 
-        function loadPage(content) {
-            document.body.innerHTML = content
+      }).getAllCompetencyData()
+    })
+
+    document.getElementById("addCompetency").addEventListener("click", function(){
+      let competency = document.getElementById("competencyName").value
+      let definition = document.getElementById("competencyDef").value
+      let type = document.getElementById("competencyType").value
+      console.log(competency)
+      console.log(definition)
+      console.log(type)
+      if(competency != "" && definition != "" && type != null){
+        google.script.run.addCompetencyData(competency, definition, type)
+      }else{
+        alert("your data is not complete yet")
+      }
+    })
+
+    function getUploadedToDatabase(){
+      google.script.run.withSuccessHandler(function(response){
+        console.log(response)
+        console.log(response.length)
+
+        function importData(index) {
+          if(index < response.length){
+            console.log(response[index])
+
+            google.script.run.withSuccessHandler(function(){
+              importData(index+1)
+            }).InputDatabase("Competency", response[index])
+          }
         }
 
-        function getPage(page) {
-            google.script.run.withSuccessHandler(loadPage).getHtmlContent(page)
-        }
-    </script>
+        importData(0)
+
+      }).withFailureHandler(handleError).getUploadedFile()
+      console.log("getUploadedToDatabase jalan")
+
+    }
+    
+    function handleError(error){
+      console.error('Error: ' + error)
+    }
+
+    function loadPage(content){
+        document.body.innerHTML = content
+    }
+
+    function getPage(page){
+        google.script.run.withSuccessHandler(loadPage).getHtmlContent(page)
+    }
+  </script>
 </body>
-
 </html>
