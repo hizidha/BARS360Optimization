@@ -44,11 +44,31 @@ function getUploadedFile() {
   while (files.hasNext()) {
     var file = files.next();
     // Check kalau dia spreadsheet atau bukan
-    if (file.getMimeType() == "application/vnd.google-apps.spreadsheet" || file.getMimeType() == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+    if (file.getMimeType() == "application/vnd.google-apps.spreadsheet") {
       // ambil lastUploaded pertama kalau baru pertama kali
       if (first) {
         lastUploadedTime = file.getLastUpdated()
         fileId = file.getId()
+        spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + fileId
+        first = false
+        Logger.log("Uploaded Time: " + lastUploadedTime + "\nMime type: " + file.getMimeType())
+      } else {
+        uploadedTime = file.getLastUpdated();
+        Logger.log("Uploaded Time: " + uploadedTime + "\nMime type: " + file.getMimeType())
+      }
+
+      Logger.log("Last Uploaded Time: " + lastUploadedTime + "\nUploaded Time: " + uploadedTime)
+      if (lastUploadedTime < uploadedTime) {
+        lastUploadedTime = uploadedTime
+        fileId = file.getId()
+        spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + fileId
+        Logger.log("Upload Changed")
+      }
+    } else if (file.getMimeType() == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"){
+      // ambil lastUploaded pertama kalau baru pertama kali
+      if (first) {
+        lastUploadedTime = file.getLastUpdated()
+        fileId = convertXLSXtoGoogleSheets(file.getId())
         spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + fileId
         first = false
         Logger.log("Uploaded Time: " + lastUploadedTime + "\nMime type: " + file.getMimeType())
