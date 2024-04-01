@@ -44,12 +44,12 @@ function getUploadedFile() {
   while (files.hasNext()) {
     var file = files.next();
     // Check kalau dia spreadsheet atau bukan
-    if (file.getMimeType() == "application/vnd.google-apps.spreadsheet") {
+    if (file.getMimeType() == "application/vnd.google-apps.spreadsheet" || file.getMimeType() == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
       // ambil lastUploaded pertama kalau baru pertama kali
       if (first) {
         lastUploadedTime = file.getLastUpdated()
         fileId = file.getId()
-        spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + fileId + "/edit"
+        spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + fileId
         first = false
         Logger.log("Uploaded Time: " + lastUploadedTime + "\nMime type: " + file.getMimeType())
       } else {
@@ -61,7 +61,7 @@ function getUploadedFile() {
       if (lastUploadedTime < uploadedTime) {
         lastUploadedTime = uploadedTime
         fileId = file.getId()
-        spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + fileId + "/edit"
+        spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + fileId
         Logger.log("Upload Changed")
       }
     }
@@ -92,6 +92,29 @@ function getUploadedFile() {
 
   Logger.log("Finished")
   return dataSheet
+}
+
+function convertXLSXtoGoogleSheets(fileId) {
+  // Specify the file ID of the Excel file stored in Google Drive
+  
+  // Fetch the Excel file from Google Drive
+  var file = DriveApp.getFileById(fileId);
+  
+  // Get the blob of the file
+  var blob = file.getBlob();
+  
+  // Convert Excel file blob to Google Sheets format
+  var convertedFile = Drive.Files.insert({
+    title: file.getName(),
+    parents: [{id: "1DFw2_YdiJcuOdKsavSR-GgGf66JeWn-Q"}],
+    mimeType: MimeType.GOOGLE_SHEETS
+  }, blob);
+  
+  // Get the ID of the newly created Google Sheets document
+  var newFileId = convertedFile.id;
+  
+  Logger.log("New Google Sheets file ID: " + newFileId)
+  return newFileId
 }
 
 function InputDatabase(tableName, dataArray){
