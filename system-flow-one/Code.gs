@@ -146,19 +146,30 @@ function InputDatabase(tableName, dataArray){
   table.appendRow(dataArray)
 }
 
-function addCompetencyData(competency, definition, category){
+function addData(valuesToAdd, sheetName){
   var url = "https://docs.google.com/spreadsheets/d/1nP78lxzG6riZGcUguZHajLNZ3zk5Lwdp8dujpd5murA/edit#gid=0"
   var spreadsheet = SpreadsheetApp.openByUrl(url)
-  var sheet = spreadsheet.getSheetByName("Competency")
+  var sheet = spreadsheet.getSheetByName(sheetName)
 
-  sheet.appendRow([competency, definition, category])
+  sheet.appendRow(valuesToAdd)
 }
 
-function deleteData(rowNum){
+function deleteData(rowNum, sheetName){
   var url = "https://docs.google.com/spreadsheets/d/1nP78lxzG6riZGcUguZHajLNZ3zk5Lwdp8dujpd5murA/edit#gid=0"
   var spreadsheet = SpreadsheetApp.openByUrl(url)
-  var sheet = spreadsheet.getSheetByName("Competency")
+  var sheet = spreadsheet.getSheetByName(sheetName)
   
   // rowNum sesuai nomor row yang ada di spreadsheet
   sheet.deleteRow(rowNum)
+}
+
+function editData(valuesToSet, rowNum, sheetName) {
+  var spreadsheet = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1nP78lxzG6riZGcUguZHajLNZ3zk5Lwdp8dujpd5murA/edit#gid=0");
+  var sheet = spreadsheet.getSheetByName(sheetName);
+
+  // first row, first column , number of row, number of column
+  var range = sheet.getRange(rowNum, 1, 1, valuesToSet.length);
+
+  // Set the values for the range
+  range.setValues([valuesToSet]);
 }

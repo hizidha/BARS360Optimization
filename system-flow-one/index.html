@@ -1,5 +1,4 @@
-<!-- Delete data masih belum bisa, ngambil datanya masih acak -->
-
+!
 <!DOCTYPE html>
 <html lang="en">
 
@@ -241,8 +240,7 @@
                       <div class="left">
                         <div class="card-title">
                           <i class="fas fa-file-lines mr-1"></i>
-                          <span class="font-weight-bold pl-2" style="font-size: 22px;">List
-                            Data</span>
+                          <span class="font-weight-bold pl-2" style="font-size: 22px;">List Data</span>
                         </div>
                       </div>
                       <div class="right">
@@ -265,9 +263,9 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody id="competencyTable">
+                    <!-- <tbody id="competencyTable">
 
-                    </tbody>
+                    </tbody> -->
                   </table>
                 </div>
               </div>
@@ -574,7 +572,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-form-pop btn-danger mr-2" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-form-pop btn-primary" data-dismiss="modal">Save</button>
+          <button id="editCompetency" type="button" class="btn btn-form-pop btn-primary"
+            data-dismiss="modal">Save</button>
           </form>
         </div>
       </div>
@@ -633,6 +632,10 @@
   <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
   <script>
+    $("#tableCompetency").DataTable({
+      "lengthChange": true,
+    });
+
     // Mendapatkan referensi ke elemen HTML
     var termsCheckbox = document.getElementById('terms-checkbox');
     var nextBtn = document.getElementById('nextbtn');
@@ -678,9 +681,68 @@
       var fileName = files[0].name;
       document.getElementById('fileList').value = fileName;
     }
+
+    // window.onload = function () {
+    //   document.addEventListener("contextmenu", function (e) {
+    //       e.preventDefault();
+    //   }, false);
+    //   document.addEventListener("keydown", function (e) {
+    //     // "C" key
+    //     if (e.ctrlKey && e.shiftKey && e.keyCode == 67) {
+    //         disabledEvent(e);
+    //     }
+    //     // "I" key
+    //     if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+    //         disabledEvent(e);
+    //     }
+    //     // "J" key
+    //     if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+    //         disabledEvent(e);
+    //     }
+    //      // "F12" key
+    //     if (e.keyCode == 123) {
+    //         disabledEvent(e);
+    //     }
+    //   }, false);
+    //   function disabledEvent(e) {
+    //     if (e.stopPropagation) {
+    //         e.stopPropagation();
+    //     } else if (window.event) {
+    //         window.event.cancelBubble = true;
+    //     }
+    //     e.preventDefault();
+    //     return false;
+    //   }
+    // }
   </script>
 
   <script>
+    var btnDeleteConfirm = document.getElementById("btnDeleteConfirm")
+    btnDeleteConfirm.addEventListener("click", function () {
+      rowNum = parseInt(this.value) + 2
+
+      console.log(this.value)
+      console.log(rowNum)
+
+      google.script.run.deleteData(rowNum, "Competency")
+    });
+
+    var btnEditCompetency = document.getElementById("editCompetency")
+    btnEditCompetency.addEventListener("click", function () {
+      rowNum = parseInt(this.value) + 2
+
+      console.log(this.value)
+      console.log(rowNum)
+
+      var competency = document.getElementById("inputCompetencyEdit").value
+      var definition = document.getElementById("inputDefinitionEdit").value
+      var category = document.getElementById("inputCategoryEdit").value
+
+      console.log([competency, definition, category])
+
+      google.script.run.editData([competency, definition, category], rowNum, "Competency")
+    })
+
     document.addEventListener("DOMContentLoaded", function () {
       google.script.run.withSuccessHandler(function (data) {
         console.log("document")
@@ -688,6 +750,17 @@
         console.log("data length: " + data.length)
 
         if (data.length > 0) {
+          var tableCompetency = document.getElementById("tableCompetency")
+          var tbodyToRemove = tableCompetency.getElementsByTagName("tbody")[0]
+
+          if (tbodyToRemove) {
+            tableCompetency.removeChild(tbodyToRemove)
+
+            var tables = document.createElement("tbody")
+            tables.setAttribute("id", "competencyTable")
+            tableCompetency.appendChild(tables)
+          }
+
           for (let index = 0; index < data.length; index++) {
             var row = document.createElement("tr")
 
@@ -792,17 +865,27 @@
             cell.appendChild(btnEdit)
             row.appendChild(cell)
 
+            var editData = {}
             btnEdit.addEventListener('click', function () {
-              var rowData = this.closest('tr').querySelectorAll('td'); // Mendapatkan semua kolom pada baris terkait
+              // Mendapatkan semua kolom pada baris terkait
+              var rowData = this.closest('tr').querySelectorAll('td');
+
               // Menyimpan informasi yang sesuai ke dalam variabel
               var definition = this.closest('tr').dataset.definition;
               var competencyName = rowData[1].textContent;
               var category = rowData[2].textContent;
 
+              editData.index = Array.from(this.closest('tr').parentNode.children).indexOf(this.closest('tr'));
+              editData.definition = definition;
+              editData.competencyName = competencyName;
+              editData.category = category;
+
               // Mengisi data ke dalam modal
               document.getElementById('inputCompetencyEdit').value = competencyName;
               document.getElementById('inputDefinitionEdit').textContent = definition;
               document.getElementById('inputCategoryEdit').value = category;
+
+              btnEditCompetency.setAttribute("value", editData.index)
             });
 
             // Buttons Delete
@@ -822,7 +905,6 @@
             document.getElementById("competencyTable").appendChild(row)
 
             var deleteData = {}
-
             btnDelete.addEventListener('click', function () {
               var rowData = this.closest('tr').querySelectorAll('td');
               var definition = this.closest('tr').dataset.definition;
@@ -830,9 +912,9 @@
               var category = rowData[2].textContent;
 
               deleteData.index = Array.from(this.closest('tr').parentNode.children).indexOf(this.closest('tr'));
-              deleteData.competencyName = rowData[1].textContent;
-              deleteData.definition = this.closest('tr').dataset.definition;
-              deleteData.category = rowData[2].textContent;
+              deleteData.definition = definition;
+              deleteData.competencyName = competencyName;
+              deleteData.category = category;
 
               document.getElementById('inputCompetencyDelete').value = competencyName;
               document.getElementById('inputDefinitionDelete').textContent = definition;
@@ -840,28 +922,8 @@
 
               btnDeleteConfirm.setAttribute("value", deleteData.index)
             });
-
-            // btnDeteleConfirm.addEventListener("click", function(){
-            //     var deleteDataParsed = deleteData;
-            //     var table = document.getElementById("competencyTable");
-
-            //     var competencyNames = deleteDataParsed.competencyName
-            //     table.deleteRow(deleteDataParsed.index);
-            //     google.script.run.deleteData(deleteDataParsed.index);   
-            //     alert("You are deleting data: " + competencyNames);
-            // });
-
           }
-
-          var btnDeleteConfirm = document.getElementById("btnDeleteConfirm")
-          btnDeleteConfirm.addEventListener("click", function () {
-            google.script.run.deleteData((btnDeleteConfirm.value) + 2)
-            alert("you're deleting data " + data[(btnDeleteConfirm.value) + 2][0])
-            console.log(btnDeleteConfirm.value)
-          });
-
           console.log(row)
-
         } else {
           var btnSyncC = document.getElementById("btnSync")
           var btnImportC = document.getElementById("btnImports")
@@ -874,17 +936,17 @@
           btnImportC.classList.add("btn-success");
           btnImportC.disabled = false
 
-          var row = document.createElement("tr")
+          // var row = document.createElement("tr")
 
-          var cell = document.createElement("td")
-          cell.textContent = "No data available in table"
-          cell.setAttribute("colspan", "7")
-          row.appendChild(cell)
+          // var cell = document.createElement("td")
+          // cell.textContent = "No data available in table"
+          // cell.setAttribute("colspan", "7")
+          // row.appendChild(cell)
 
-          row.style.verticalAlign = "middle"
-          row.style.textAlign = "center"
+          // row.style.verticalAlign = "middle"
+          // row.style.textAlign = "center"
 
-          document.getElementById("competencyTable").appendChild(row)
+          // document.getElementById("competencyTable").appendChild(row)
         }
 
       }).getAllCompetencyData()
@@ -898,7 +960,7 @@
       console.log(definition)
       console.log(type)
       if (competency != "" && definition != "" && type != null) {
-        google.script.run.addCompetencyData(competency, definition, type)
+        google.script.run.addData([competency, definition, type], "Competency")
       } else {
         alert("your data is not complete yet")
       }
@@ -939,4 +1001,5 @@
     }
   </script>
 </body>
+
 </html>

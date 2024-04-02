@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" href="./src/hrms.png">
+    <link rel="SHORTCUT ICON" href="./src/hrms.ico" type="image/x-icon">
+    <title>BARS Participant | HRMS</title>
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Data Table -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
+
+    <style>
+        a,
+        a:hover,
+        a:focus {
+            color: white;
+            text-decoration: none;
+        }
+
+        th {
+            font-size: 13px;
+        }
+
+        td {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .btn-form-pop {
+            padding: 4px 50px;
+        }
+
+        .btn-xs>span.font-weight-semibold {
+            font-size: 10px;
+        }
+
+        .button-like {
+            font-size: 11px;
+            display: inline-block;
+            padding: 1px 9px;
+            margin-right: 2px;
+            border-radius: 3px;
+            color: black;
+        }
+    </style>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+</head>
+
+<body class="sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-light-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="https://www.spil.co.id/img/spil_logo.581f4306.svg" alt="logo-spil"
+                    class="brand-image img-circle" style="padding-left: 0; margin-left: 10px;">
+                <span class="font-weight-bold" style="color: rgb(202, 8, 8); margin-left: 16px;">SPIL</span>HRMS
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-4">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon"><img src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+                                        alt="logo-spil" style="width: 34px;"></i>
+                                <p class="font-weight-bold" style="font-size: 12pt; padding-left: 16px;">Connecting
+                                    Islands</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="form-inline mt-4">
+                        <div class="input-group mb-2" data-widget="sidebar-search">
+                            <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="true">
+                        <!-- Add more sidebar menu items here -->
+                        <? var url = getScriptUrl(); ?>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=period' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Period</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=relation' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Relation</p>
+                            </a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=pattern' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Pattern</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=participant' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Participant</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='<?!=url?>?page=assessor' class="nav-link">
+                                <i class="nav-icon fa-dot-circle fas"></i>
+                                <p>Assessor</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content" style="padding: 4vh;">
+                <div class="container-fluid">
+                    <!-- Your content goes here -->
+                    <h3 class="font-weight-bold pb-3">BARS 360 Participant</h3>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div style="padding: 1vh 1vh 0 1vh;">
+                                        <div style="display: inline-flex; justify-content: space-between; width: 100%;">
+                                            <div class="left">
+                                                <div class="card-title">
+                                                    <button class="btn btn-s" style="background-color: rgb(223, 23, 23);
+                                                    color: white;">
+                                                        <a href='<?!=url?>?page=participant'>
+                                                            <i class="fas fa-arrow-left"></i>
+                                                        </a>
+                                                    </button>
+                                                    <span class="font-weight-bold pl-4" style="font-size: 22px;">
+                                                        Participant Details</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div style="text-align: center; margin-bottom: 40px;">
+                                        <div class="form-group row" style="margin: 12px 260px 12px 200px;">
+                                            <label for="inputID" class="col-sm-6 col-form-label pr-4"
+                                                style="text-align: right;">Participant ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="inputID" value="X893JFI"
+                                                    disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" style="margin: 12px 260px 8px 200px;">
+                                            <label for="inputNames" class="col-sm-6 col-form-label pr-4"
+                                                style="text-align: right;">Participant Name</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="inputNames"
+                                                    value="Gwawr Janek Twist" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" style="margin: 8px 260px 4px 200px;">
+                                            <label for="inputNames" class="col-sm-6 col-form-label pr-4"
+                                                style="text-align: right;">Detail Competency</label>
+                                            <div class="col-sm-2">
+                                                <button class="btn btn-xs btn-secondary pl-2 pr-2" data-toggle="modal"
+                                                    data-target="#DataModal" style="margin-top: 9px;">
+                                                    Click Here
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" style="margin: 4px 260px 0px 200px;">
+                                            <label for="inputID" class="col-sm-6 col-form-label pr-4"
+                                                style="text-align: right;">Participate?</label>
+                                            <div class="col-sm-2">
+                                                <div
+                                                    class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success pt-2 pl-0">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="inputPeriodActive" checked>
+                                                    <label class="custom-control-label" for="inputPeriodActive"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table id="tableRelation" class="table table-bordered table-hover table-sm"
+                                        style="width: 100%;">
+                                        <thead style="background-color: rgb(223, 23, 23); color: white;">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Position</th>
+                                                <th>Department</th>
+                                                <th>Division</th>
+                                                <th>Location</th>
+                                                <th>Period</th>
+                                                <th>Remark</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>A/P Cashier</td>
+                                                <td>Finance & Administration Department</td>
+                                                <td>Operation Division</td>
+                                                <td>Kalianak</td>
+                                                <td>01/01/2024 - 31/07/2024</td>
+                                                <td>MUTASI</td>
+                                                <td>
+                                                    <button id="topButton" class="btn btn-xs btn-secondary ml-1"
+                                                        onclick="toggleButton(this)">
+                                                        <i class="fa fas fa-circle-check pl-1"
+                                                            style="color: rgb(0, 0, 0);"></i>
+                                                        <span class="button-like mr-0 font-weight-semibold"
+                                                            style="color: rgb(0, 0, 0); padding-left: 8px; padding-right: 8px;">Selected</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>A/P Cashier</td>
+                                                <td>Finance & Administration Core Department</td>
+                                                <td>Finance & Administration Division</td>
+                                                <td>Karet</td>
+                                                <td>07/07/2023 - 31/12/2023</td>
+                                                <td>MUTASI</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-success ml-1"
+                                                        onclick="toggleButton(this)">
+                                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                                        <span class="button-like" style="color: white;">Select</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>A/P Cashier</td>
+                                                <td>Finance & Administration Core Department</td>
+                                                <td>Finance & Administration Division</td>
+                                                <td>Karet</td>
+                                                <td>14/04/2023 - 07/07/2023</td>
+                                                <td>MUTASI</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-success ml-1"
+                                                        onclick="toggleButton(this)">
+                                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                                        <span class="button-like" style="color: white;">Select</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Finance Staff</td>
+                                                <td>Finance & Administration Core Department</td>
+                                                <td>Finance & Administration Division</td>
+                                                <td>Karet</td>
+                                                <td>01/11/2022 - 14/04/2023</td>
+                                                <td>AWAL</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-success ml-1"
+                                                        onclick="toggleButton(this)">
+                                                        <i class="fa fas fa-circle-check pl-2"></i>
+                                                        <span class="button-like" style="color: white;">Select</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer"
+                                    style="display: flex; justify-content: end; border-top: 1px solid #dee2e6; padding: 20px 20px;">
+                                    <button type="button" class="btn btn-form-pop btn-danger mr-2">
+                                        <a href="<?!=url?>?page=participant">Cancel</a>
+                                    </button>
+                                    <button type="button" class="btn btn-form-pop btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <strong class="float-right d-none d-sm-inline">
+                v1.0.0
+            </strong>
+            <!-- Default to the left -->
+            <strong style="color: black;">
+                <a href="https://spil.co.id/" style="color:blue;">2024 SPIL</a>.
+                Crafted by HRIS & HRIS Army
+            </strong>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="DataModal" tabindex="-1" aria-labelledby="DataModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="max-width: 90vw;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Participant Competency Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fas-x pt-1">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="tableCompetencyDetail" class="table table-bordered table-hover table-sm">
+                        <thead style="background-color: rgb(223, 23, 23); color: white;">
+                            <tr>
+                                <th style="padding-right: 25px;">No</th>
+                                <th style="padding-right: 25px;">Name</th>
+                                <th style="padding-right: 25px;">Category</th>
+                                <th>Behavior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Integrity & Trust</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Mampu bersikap jujur dalam perasaan & perilaku</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Interpersonal Agility</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Berinteraksi baik dengan rekan kerja</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Drive for Result</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Mengetahui target kerja yang diharapkan dari dirinya di dalam tim</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Strategic Agility</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Mampu memetakan dan berkomunikasi dengan pihak-pihak yang dapat bermanfaat bagi
+                                    pekerjaannya</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Sizing Up People</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Bersedia membantu rekan kerja ketika mereka membutuhkan bantuan</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Learning Agility</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Belajar hal - hal baru yang berguna untuk menunjang pekerjaan</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Customer Focus</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Mampu menjawab pertanyaan internal maupun eksternal customer dengan jawaban yang
+                                    tepat</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Problem Solving</td>
+                                <td>
+                                    <span class="button-like"
+                                        style="background-color: rgba(42, 255, 53, 0.7); border: 1px solid #1ace0a;">
+                                        Core</span>
+                                </td>
+                                <td>Mengidentifikasi adanya masalah dan mampu menjelaskan masalah yang ditemukan kepada
+                                    atasan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-form-pop btn-danger" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- AdminLTE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Data Table -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#tableRelation').DataTable({
+                "lengthChange": true,
+                "autoWidth": true,
+            });
+
+            // $('#tableCompetencyDetail').DataTable();
+            $('.overlay').hide();
+            $('.overlay-2').hide();
+
+            $('.btn-sync').click(function () {
+                $('.overlay').fadeIn();
+                setTimeout(function () {
+                    $('.overlay').fadeOut();
+                }, 2000);
+            });
+
+            $('.sync-ind').click(function () {
+                $('.overlay-2').fadeIn();
+                setTimeout(function () {
+                    $('.overlay-2').fadeOut();
+                }, 1500);
+            });
+
+            function toggleButton(thisBtn) {
+                // ganti yang selected ke select (abu-abu ke hijau)
+                var btnSelect = document.querySelectorAll(".btnSelect")
+                console.log(btnSelect)
+                btnSelect.forEach(function (element) {
+                    console.log(element.textContent);
+                    console.log(element.classList);
+                    if (element.classList.contains("btn-secondary")) {
+                        element.classList.replace("btn-secondary", "btn-success")
+                        var icon = element.querySelector("i")
+                        icon.style.color = "white"
+                        icon.classList.replace("pl-1", "pl-2")
+
+                        var span = element.querySelector("span")
+                        span.classList.remove("mr-0", "font-weight-semibold")
+                        span.style.color = "white"
+                        span.style.paddingLeft = ""
+                        span.style.paddingRight = ""
+                        span.innerHTML = "Select"
+                    }
+                    console.log(element.classList)
+                });
+
+                // ganti button yang diklik dari select ke selected (hijau ke abu-abu)
+                var button = document.getElementById(thisBtn.id)
+                button.classList.replace("btn-success", "btn-secondary")
+                var icon = button.querySelector("i")
+                icon.classList.replace("pl-2", "pl-1")
+                icon.style.color = "black"
+
+                var span = button.querySelector("span")
+                span.classList.add("mr-0", "font-weight-semibold")
+                span.style.color = "black"
+                span.style.paddingLeft = "8px"
+                span.style.paddingRight = "8px"
+                span.innerHTML = "Selected"
+            }
+        });
+    </script>
+
+    <script>
+        function loadPage(content) {
+            document.body.innerHTML = content
+        }
+
+        function getPage(page) {
+            google.script.run.withSuccessHandler(loadPage).getHtmlContent(page)
+        }
+    </script>
+</body>
+</html>
